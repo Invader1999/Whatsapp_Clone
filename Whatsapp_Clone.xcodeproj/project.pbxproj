@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F082F4F2BEBE5C500C2A2F6 /* ChatPartnerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F082F4E2BEBE5C500C2A2F6 /* ChatPartnerRowView.swift */; };
 		1F86332C2BE4F77E002EC595 /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86332B2BE4F77E002EC595 /* UserItem.swift */; };
 		1F86332F2BE4F7EC002EC595 /* FirebasConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86332E2BE4F7EC002EC595 /* FirebasConstants.swift */; };
 		1F8633312BE4FEB5002EC595 /* ChatPartnerPickerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8633302BE4FEB5002EC595 /* ChatPartnerPickerScreen.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F082F4E2BEBE5C500C2A2F6 /* ChatPartnerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPartnerRowView.swift; sourceTree = "<group>"; };
 		1F86332B2BE4F77E002EC595 /* UserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
 		1F86332E2BE4F7EC002EC595 /* FirebasConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasConstants.swift; sourceTree = "<group>"; };
 		1F8633302BE4FEB5002EC595 /* ChatPartnerPickerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPartnerPickerScreen.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				1FCAB8AA2BD8DC1900B04AA5 /* ChannelTabScreen.swift */,
 				1FCAB8AC2BD8DF0200B04AA5 /* ChatItemView.swift */,
 				1F8633302BE4FEB5002EC595 /* ChatPartnerPickerScreen.swift */,
+				1F082F4E2BEBE5C500C2A2F6 /* ChatPartnerRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				1FF667102BD6D1A30087A87E /* Whatsapp_CloneApp.swift in Sources */,
 				1FD3E9852BD913310031F8FD /* MessageListView.swift in Sources */,
 				1FEEFF212BE3A00B00FBCE3C /* RootSrceen.swift in Sources */,
+				1F082F4F2BEBE5C500C2A2F6 /* ChatPartnerRowView.swift in Sources */,
 				1FEEFF242BE3A03500FBCE3C /* RootScreenModel.swift in Sources */,
 				1F9BC7EA2BDD0C8300A524BE /* AuthTextField.swift in Sources */,
 				1FCAB8BB2BD8EED900B04AA5 /* ChatRoomScreen.swift in Sources */,
