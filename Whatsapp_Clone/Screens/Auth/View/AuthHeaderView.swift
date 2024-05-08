@@ -9,7 +9,15 @@ import SwiftUI
 
 struct AuthHeaderView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack{
+            Image(.whatsapp)
+                .resizable()
+                .frame(width: 40,height: 40)
+            Text("Whatsapp")
+                .font(.largeTitle)
+                .foregroundStyle(.white)
+                .fontWeight(.semibold)
+        }
     }
 }
 
