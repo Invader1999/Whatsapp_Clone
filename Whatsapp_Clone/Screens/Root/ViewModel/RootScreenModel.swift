@@ -19,5 +19,16 @@ final class RootScreenModel{
                 self?.authState = latestAuthState
                 print(self?.authState)
             }
+        
+//        AuthManager.testAccounts.forEach { email in
+//            registerTestAccounts(with: email)
+//        }
     }
+    
+//    private func registerTestAccounts(with email:String){
+//        Task{
+//            let username = email.replacingOccurrences(of: "@test.com", with: "")
+//            try await AuthManager.shared.createAccount(for: username, with: email, and: "12345678")
+//        }
+//    }
 }
