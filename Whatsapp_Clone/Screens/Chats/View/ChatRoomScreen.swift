@@ -9,16 +9,16 @@ import SwiftUI
 
 struct ChatRoomScreen: View {
     let channel:ChannelItem
-    @State private var viewModel:ChatRoomViewModel
+    @StateObject private var viewModel:ChatRoomViewModel
     
     init(channel: ChannelItem) {
         self.channel = channel
-        _viewModel = State(wrappedValue: ChatRoomViewModel(channel))
+        _viewModel = StateObject(wrappedValue: ChatRoomViewModel(channel))
+       
     }
     
-   
     var body: some View {
-      MessageListView()
+        MessageListView(viewModel)
         .toolbar(.hidden, for: .tabBar)
         .toolbar{
             leadingNavItems()
