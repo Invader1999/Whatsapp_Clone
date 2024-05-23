@@ -9,18 +9,25 @@ import Foundation
 import Observation
 import Firebase
 
-@Observable
-final class ChannelTabViewModel{
-   
-    var navigateToChatRoom = false
-    var newChannel:ChannelItem?
-    var showChatPartnerPickerView = false
-    var channels = [ChannelItem]()
+enum ChannelTabRoutes:Hashable{
+    case chatRoom(_ channel:ChannelItem)
+}
+
+
+final class ChannelTabViewModel:ObservableObject{
+    
+    @Published var navigationRoutes = [ChannelTabRoutes]()
+    @Published var navigateToChatRoom = false
+    @Published var newChannel:ChannelItem?
+    @Published  var showChatPartnerPickerView = false
+    @Published var channels = [ChannelItem]()
+    
     typealias ChannelId = String
-    var channelDictionary:[ChannelId:ChannelItem] = [:]
+    @Published var channelDictionary:[ChannelId:ChannelItem] = [:]
     
-    
-    init() {
+    private let currentUser:UserItem
+    init(_ currentUser:UserItem){
+        self.currentUser = currentUser
         fetchCurrentUserChannel()
     }
     
@@ -41,18 +48,21 @@ final class ChannelTabViewModel{
         } withCancel: { error in
             print("Failed to get users channel's IDs:\(error.localizedDescription)")
         }
-
+        
     }
     
     private func getChannel(with channelId:String){
         FirebaseConstants.ChannelsRef.child(channelId).observe(.value) {[weak self] snapshot in
-            guard let dict = snapshot.value as? [String:Any] else{return}
+            guard let dict = snapshot.value as? [String:Any], let self = self else{return}
             var channel = ChannelItem(dict)
-            self?.getChannelMembers(channel){ members in
+            self.getChannelMembers(channel){ members in
                 channel.members = members
-                self?.channelDictionary[channelId] = channel
-                self?.reloadData()
-//                self?.channels.append(channel)
+                
+                channel.members.append(self.currentUser)
+                
+                self.channelDictionary[channelId] = channel
+                self.reloadData()
+                //                self?.channels.append(channel)
                 print("channel \(channel.title)")
             }
         }withCancel: { error in

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GroupPartnerPickerScreen: View {
     @State private var searchText = ""
-    @State var viewModel:ChatPartnerPickerViewModel
+    @ObservedObject var viewModel:ChatPartnerPickerViewModel
     var body: some View {
         List {
             if viewModel.showSelectedUsers{

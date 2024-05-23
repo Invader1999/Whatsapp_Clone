@@ -11,8 +11,8 @@ struct ChatItemView: View {
     let channel:ChannelItem
     var body: some View {
         HStack(alignment: .top,spacing: 10){
-           Circle()
-                .frame(width: 60,height: 60)
+         
+            CircularProfileImageView(channel,size: .medium)
             
             VStack(alignment:.leading,spacing: 3){
                 titleTextView()
@@ -29,7 +29,7 @@ struct ChatItemView: View {
             
             Spacer()
             
-            Text("\(channel.lastMessageTimeStamp)")
+            Text("\(channel.lastMessageTimeStamp.dayOrTimeRepresentation)")
                 .foregroundStyle(.gray)
                 .font(.system(size: 15))
         }

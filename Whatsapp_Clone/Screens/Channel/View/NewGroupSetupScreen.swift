@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewGroupSetupScreen: View {
     @State private var channelName:String = ""
-    @State var viewModel:ChatPartnerPickerViewModel
+    @ObservedObject var viewModel:ChatPartnerPickerViewModel
     var onCreate:(_ newChannel:ChannelItem) -> Void
     var body: some View {
         List{

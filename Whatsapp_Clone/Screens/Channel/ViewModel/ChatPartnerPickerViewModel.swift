@@ -8,6 +8,7 @@
 import Firebase
 import Foundation
 import Observation
+import Combine
 
 enum ChannelCreationRoute {
     case groupPartnerPicker
@@ -23,14 +24,16 @@ enum ChannelConstants {
     static let maximumGroupParticipants = 12
 }
 
-@Observable
-final class ChatPartnerPickerViewModel {
-    var navStack = [ChannelCreationRoute]()
-    var selectedChatPartners = [UserItem]()
-    private(set) var users = [UserItem]()
-    var errorState:(showError:Bool,errorMessage:String) = (false,"Uh Oh")
-    
+//@Observable
+@MainActor
+final class ChatPartnerPickerViewModel:ObservableObject {
+    @Published var navStack = [ChannelCreationRoute]()
+    @Published var selectedChatPartners = [UserItem]()
+    @Published  private(set) var users = [UserItem]()
+    @Published var errorState:(showError:Bool,errorMessage:String) = (false,"Uh Oh")
+    private var subscription: AnyCancellable?
     private var lastCursor: String?
+    private var currentUser : UserItem?
     
     var showSelectedUsers: Bool {
         return !selectedChatPartners.isEmpty
@@ -48,14 +51,30 @@ final class ChatPartnerPickerViewModel {
     }
     
     init() {
-        Task {
-            await fetchUsers()
+        listenForAuthState()
+    }
+    deinit{
+        subscription?.cancel()
+        subscription = nil
+    }
+    
+    private func listenForAuthState(){
+       subscription = AuthManager.shared.authState.receive(on:DispatchQueue.main).sink { [weak self] authState in
+            switch authState{
+            case .loggedIn(let loggedInUser):
+                self?.currentUser  = loggedInUser
+                Task {await self?.fetchUsers()}
+            default:
+                break
+            }
+        
+            
         }
     }
     
     // MARK: - Public Methods
     
-    @MainActor
+    
     func fetchUsers() async {
         do {
             let userNode = try await UserService.paginateUsers(lastCursor: lastCursor, pageSize: 5)
@@ -104,6 +123,9 @@ final class ChatPartnerPickerViewModel {
                 var channelDict = snapshot.value as! [String:Any]
                 var directChannel = ChannelItem(channelDict)
                 directChannel.members = selectedChatPartners
+                if let currentUser{
+                    directChannel.members.append(currentUser)
+                }
                 completion(directChannel)
                 
             }else{
@@ -197,6 +219,9 @@ final class ChatPartnerPickerViewModel {
         }
         var newChannelItem = ChannelItem(channelDict)
         newChannelItem.members = selectedChatPartners
+        if let currentUser{
+            newChannelItem.members.append(currentUser)
+        }
         return .success(newChannelItem)
     }
 }

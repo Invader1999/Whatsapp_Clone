@@ -36,10 +36,14 @@ struct MessageService{
             var messages:[MessageItem] = []
             dict.forEach { key, value in
                 let messageDict = value as? [String: Any] ?? [:]
-                let message = MessageItem(id: key, dict: messageDict)
+                let message = MessageItem(id: key,isGroupChat: channel.isGroupChat, dict: messageDict)
                 messages.append(message)
-                completion(messages)
-                print("messageDict: \(messageDict)")
+                if messages.count == snapshot.childrenCount{
+                    messages.sort{$0.timeStamp < $1.timeStamp}
+                    completion(messages)
+                }
+               
+                //print("messageDict: \(messageDict)")
             }
         }withCancel: { error in
             print("Failed to get messages for \(channel.title)")

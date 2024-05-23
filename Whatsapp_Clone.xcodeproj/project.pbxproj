@@ -36,6 +36,10 @@
 		1FA219A12BDBCFE3004AFEBB /* BubbleVoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA219A02BDBCFE3004AFEBB /* BubbleVoiceView.swift */; };
 		1FB3D9062BE0103000D9DA96 /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB3D9052BE0103000D9DA96 /* SignUpScreen.swift */; };
 		1FB3D9092BE0133100D9DA96 /* AuthScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB3D9082BE0133100D9DA96 /* AuthScreenModel.swift */; };
+		1FBA3B7A2BF8893700FE2620 /* ChannelCreationTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA3B792BF8893700FE2620 /* ChannelCreationTextView.swift */; };
+		1FBA3B7C2BF88B2900FE2620 /* AdminMessageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA3B7B2BF88B2900FE2620 /* AdminMessageTextView.swift */; };
+		1FBA3B7F2BF8949000FE2620 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1FBA3B7E2BF8949000FE2620 /* Kingfisher */; };
+		1FBA3B822BF894BE00FE2620 /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA3B812BF894BE00FE2620 /* CircularProfileImageView.swift */; };
 		1FBE85A22BE0ADF20004712F /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE85A12BE0ADF20004712F /* AuthProvider.swift */; };
 		1FCAB8A72BD8D25600B04AA5 /* CommunityTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAB8A62BD8D25600B04AA5 /* CommunityTabScreen.swift */; };
 		1FCAB8AB2BD8DC1900B04AA5 /* ChannelTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAB8AA2BD8DC1900B04AA5 /* ChannelTabScreen.swift */; };
@@ -49,6 +53,7 @@
 		1FD3E9852BD913310031F8FD /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD3E9842BD913310031F8FD /* MessageListView.swift */; };
 		1FE600992BEFAC80008E121B /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE600982BEFAC80008E121B /* String+Extensions.swift */; };
 		1FE6009B2BEFBD04008E121B /* MessageItems+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE6009A2BEFBD04008E121B /* MessageItems+Types.swift */; };
+		1FEC7AC62BF9C3BC001DBE20 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEC7AC52BF9C3BC001DBE20 /* Date+Extensions.swift */; };
 		1FEEFF212BE3A00B00FBCE3C /* RootSrceen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEEFF202BE3A00B00FBCE3C /* RootSrceen.swift */; };
 		1FEEFF242BE3A03500FBCE3C /* RootScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEEFF232BE3A03500FBCE3C /* RootScreenModel.swift */; };
 		1FF667102BD6D1A30087A87E /* Whatsapp_CloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6670F2BD6D1A30087A87E /* Whatsapp_CloneApp.swift */; };
@@ -86,6 +91,9 @@
 		1FA219A02BDBCFE3004AFEBB /* BubbleVoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleVoiceView.swift; sourceTree = "<group>"; };
 		1FB3D9052BE0103000D9DA96 /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		1FB3D9082BE0133100D9DA96 /* AuthScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthScreenModel.swift; sourceTree = "<group>"; };
+		1FBA3B792BF8893700FE2620 /* ChannelCreationTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationTextView.swift; sourceTree = "<group>"; };
+		1FBA3B7B2BF88B2900FE2620 /* AdminMessageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMessageTextView.swift; sourceTree = "<group>"; };
+		1FBA3B812BF894BE00FE2620 /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
 		1FBE85A12BE0ADF20004712F /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		1FCAB8A62BD8D25600B04AA5 /* CommunityTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTabScreen.swift; sourceTree = "<group>"; };
 		1FCAB8AA2BD8DC1900B04AA5 /* ChannelTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTabScreen.swift; sourceTree = "<group>"; };
@@ -99,6 +107,7 @@
 		1FD3E9842BD913310031F8FD /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
 		1FE600982BEFAC80008E121B /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		1FE6009A2BEFBD04008E121B /* MessageItems+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageItems+Types.swift"; sourceTree = "<group>"; };
+		1FEC7AC52BF9C3BC001DBE20 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		1FEEFF202BE3A00B00FBCE3C /* RootSrceen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootSrceen.swift; sourceTree = "<group>"; };
 		1FEEFF232BE3A03500FBCE3C /* RootScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootScreenModel.swift; sourceTree = "<group>"; };
 		1FF6670C2BD6D1A30087A87E /* Whatsapp_Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whatsapp_Clone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FBA3B7F2BF8949000FE2620 /* Kingfisher in Frameworks */,
 				1F4F27BD2BECC19E00060518 /* FirebaseMessaging in Frameworks */,
 				1F4F27BB2BECC19E00060518 /* FirebaseDatabaseSwift in Frameworks */,
 				1F4F27B92BECC19E00060518 /* FirebaseDatabase in Frameworks */,
@@ -216,6 +226,14 @@
 				1FB3D9082BE0133100D9DA96 /* AuthScreenModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1FBA3B802BF894A000FE2620 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1FBA3B812BF894BE00FE2620 /* CircularProfileImageView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		1FBE85A02BE0ADD90004712F /* Services */ = {
@@ -360,6 +378,8 @@
 				1FA219992BDBB32F004AFEBB /* BubbleTailView.swift */,
 				1FA2199E2BDBC610004AFEBB /* BubbleImageView.swift */,
 				1FA219A02BDBCFE3004AFEBB /* BubbleVoiceView.swift */,
+				1FBA3B792BF8893700FE2620 /* ChannelCreationTextView.swift */,
+				1FBA3B7B2BF88B2900FE2620 /* AdminMessageTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -368,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				1FE600982BEFAC80008E121B /* String+Extensions.swift */,
+				1FEC7AC52BF9C3BC001DBE20 /* Date+Extensions.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -416,6 +437,7 @@
 		1FF6670E2BD6D1A30087A87E /* Whatsapp_Clone */ = {
 			isa = PBXGroup;
 			children = (
+				1FBA3B802BF894A000FE2620 /* Components */,
 				1FE600972BEFAA72008E121B /* Extenstions */,
 				1F4567E52BEF41F700B67EAA /* Service */,
 				1F86332D2BE4F7D4002EC595 /* Utils */,
@@ -468,6 +490,7 @@
 				1F4F27BA2BECC19E00060518 /* FirebaseDatabaseSwift */,
 				1F4F27BC2BECC19E00060518 /* FirebaseMessaging */,
 				1F4F27BE2BECC19E00060518 /* FirebaseStorage */,
+				1FBA3B7E2BF8949000FE2620 /* Kingfisher */,
 			);
 			productName = Whatsapp_Clone;
 			productReference = 1FF6670C2BD6D1A30087A87E /* Whatsapp_Clone.app */;
@@ -499,6 +522,7 @@
 			mainGroup = 1FF667032BD6D1A30087A87E;
 			packageReferences = (
 				1F4F27B52BECC19E00060518 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1FBA3B7D2BF8948F00FE2620 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 1FF6670D2BD6D1A30087A87E /* Products */;
 			projectDirPath = "";
@@ -530,6 +554,7 @@
 				1FF9F29E2BD76D790076D685 /* UpdatesTabScreen.swift in Sources */,
 				1FB3D9092BE0133100D9DA96 /* AuthScreenModel.swift in Sources */,
 				1F86332F2BE4F7EC002EC595 /* FirebaseConstants.swift in Sources */,
+				1FBA3B822BF894BE00FE2620 /* CircularProfileImageView.swift in Sources */,
 				1F9BC7EC2BDD117200A524BE /* AuthButton.swift in Sources */,
 				1FA219982BDBB28F004AFEBB /* BubbuleTextView.swift in Sources */,
 				1FCAB8B22BD8E25600B04AA5 /* SettingItemView.swift in Sources */,
@@ -540,6 +565,7 @@
 				1FBE85A22BE0ADF20004712F /* AuthProvider.swift in Sources */,
 				1FF9F2A02BD77B3A0076D685 /* CallTabScreen.swift in Sources */,
 				1FCAB8A72BD8D25600B04AA5 /* CommunityTabScreen.swift in Sources */,
+				1FBA3B7C2BF88B2900FE2620 /* AdminMessageTextView.swift in Sources */,
 				1FA219A12BDBCFE3004AFEBB /* BubbleVoiceView.swift in Sources */,
 				1FE600992BEFAC80008E121B /* String+Extensions.swift in Sources */,
 				1FD3E9832BD911040031F8FD /* MessageListController.swift in Sources */,
@@ -553,6 +579,7 @@
 				1F4F27C42BECCA0F00060518 /* GroupPartnerPickerScreen.swift in Sources */,
 				1FA2199F2BDBC610004AFEBB /* BubbleImageView.swift in Sources */,
 				1F8633312BE4FEB5002EC595 /* ChatPartnerPickerScreen.swift in Sources */,
+				1FBA3B7A2BF8893700FE2620 /* ChannelCreationTextView.swift in Sources */,
 				1F9BC7E62BDD0B3600A524BE /* LoginScreen.swift in Sources */,
 				1F4567E42BEF3A0E00B67EAA /* NewGroupSetupScreen.swift in Sources */,
 				1FF667102BD6D1A30087A87E /* Whatsapp_CloneApp.swift in Sources */,
@@ -565,6 +592,7 @@
 				1FCAB8BB2BD8EED900B04AA5 /* ChatRoomScreen.swift in Sources */,
 				1FCAB8AD2BD8DF0200B04AA5 /* ChatItemView.swift in Sources */,
 				1FA219962BDBB1F4004AFEBB /* MessageItem.swift in Sources */,
+				1FEC7AC62BF9C3BC001DBE20 /* Date+Extensions.swift in Sources */,
 				1F4567E72BEF420800B67EAA /* UserService.swift in Sources */,
 				1FCAB8B02BD8E1A700B04AA5 /* SettingTabScreen.swift in Sources */,
 				1FA2199D2BDBB40A004AFEBB /* CustomModifiers.swift in Sources */,
@@ -784,6 +812,14 @@
 				minimumVersion = 10.25.0;
 			};
 		};
+		1FBA3B7D2BF8948F00FE2620 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -811,6 +847,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1F4F27B52BECC19E00060518 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		1FBA3B7E2BF8949000FE2620 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1FBA3B7D2BF8948F00FE2620 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

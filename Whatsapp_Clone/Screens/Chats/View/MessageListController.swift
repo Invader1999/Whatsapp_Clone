@@ -18,6 +18,8 @@ final class MessageListController:UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundColor = .clear
+        view.backgroundColor = .clear
         setUpViews()
         setUpMessageListeners()
     }
@@ -44,17 +46,29 @@ final class MessageListController:UIViewController{
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = UIColor.gray.withAlphaComponent(0.4)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         return tableView
     }()
     
+    private let backgroundImageView:UIImageView = {
+        let backgroundImageView = UIImageView(image:.chatbackground)
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        return backgroundImageView
+    }()
     
     private func setUpViews(){
+        view.addSubview(backgroundImageView)
         view.addSubview(tableView)
         
         
         NSLayoutConstraint.activate([
+            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -96,6 +110,18 @@ extension MessageListController:UITableViewDelegate, UITableViewDataSource{
                 BubbleImageView(item:message)
             case .audio:
                 BubbleVoiceView(item: message)
+            case .admin(let adminType):
+                switch adminType {
+                case .channelCreation:
+                    ChannelCreationTextView()
+                    
+                    if viewModel.channel.isGroupChat{
+                        AdminMessageTextView(channel: viewModel.channel)
+                            
+                    }
+                default:
+                    Text("UNKOWN")
+                }
             }
 
         }
@@ -110,4 +136,5 @@ extension MessageListController:UITableViewDelegate, UITableViewDataSource{
 
 #Preview{
     MessageListView(ChatRoomViewModel(.placeholder))
+        .ignoresSafeArea()
 }

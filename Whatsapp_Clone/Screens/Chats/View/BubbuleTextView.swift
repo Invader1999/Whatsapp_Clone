@@ -10,35 +10,34 @@ import SwiftUI
 struct BubbuleTextView: View {
     var item:MessageItem
     var body: some View {
-        VStack(alignment:item.horizontalAlignment, spacing:3){
+        HStack(alignment:.bottom, spacing:5){
+            if item.showGroupPartnerInfo{
+                CircularProfileImageView(item.sender?.profileImageUrl,size: .mini)
+            }
+            
+            if item.direction == .sent{
+                timeStampTextView()
+            }
             Text(item.text)
                 .padding(10)
                 .background(item.backgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: 16,style: .continuous))
                 .applyTail(direction: item.direction)
                 
-            timeStampTextView()
+            if item.direction == .received{
+                timeStampTextView()
+            }
         }
         .shadow(color: Color(.systemGray3).opacity(0.1), radius: 5,x: 0,y: 20)
         .frame(maxWidth: .infinity,alignment: item.alignment)
-        .padding(.leading,item.direction == .received ? 5 : 100)
-        .padding(.trailing,item.direction == .received ? 100 : 5)
+        .padding(.leading,item.leadingPadding)
+        .padding(.trailing,item.trailingPadding)
     }
+    
     private func timeStampTextView()->some View{
-        HStack{
-            Text("3:50 PM")
-                .font(.system(size: 13))
-                
+            Text(item.timeStamp.formatToTime)
+                .font(.footnote)
                 .foregroundStyle(.gray)
-                
-            if item.direction == .sent{
-                Image(.seen)
-                    .resizable()
-                    .renderingMode(.template)
-                    .frame(width: 15,height: 15)
-                    .foregroundStyle(Color(.systemBlue))
-            }
-        }
     }
 }
 

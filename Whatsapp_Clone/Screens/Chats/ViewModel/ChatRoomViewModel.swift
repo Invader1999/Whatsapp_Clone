@@ -16,7 +16,7 @@ final class ChatRoomViewModel:ObservableObject {
     
    @Published var messages = [MessageItem]()
     
-    private let channel: ChannelItem
+    private(set) var channel: ChannelItem
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -35,10 +35,16 @@ final class ChatRoomViewModel:ObservableObject {
     
     private func listenToAuthState() {
         AuthManager.shared.authState.receive(on: DispatchQueue.main).sink {[weak self] authState in
+            guard let self = self else {return}
             switch authState {
             case .loggedIn(let currentUser):
-                self?.currentUser = currentUser
-                self?.getMessages()
+                self.currentUser = currentUser
+                if self.channel.allMembersFetched{
+                    self.getMessages()
+                    print("channel members: \(channel.members.map{$0.username})")
+                }else{
+                    self.getAllChannelMembers()
+                }
             default:
                 break
             }
@@ -56,6 +62,20 @@ final class ChatRoomViewModel:ObservableObject {
         MessageService.getMessages(for: channel) {[weak self] messages in
             self?.messages = messages
             print("messages: \(messages.map{$0.text})")
+        }
+    }
+    
+    private func getAllChannelMembers(){
+        guard let currentUser = currentUser else {return}
+        let memebersAlreadyFetched = channel.members.compactMap{$0.uid}
+        var memberUIDSToFetch = channel.membersUids.filter{!memebersAlreadyFetched.contains($0)}
+        memberUIDSToFetch = memberUIDSToFetch.filter{$0 != currentUser.uid}
+        
+        UserService.getUsers(with: memberUIDSToFetch) { [weak self] userNode in
+            guard let self = self else {return}
+            self.channel.members.append(contentsOf: userNode.users)
+            self.getMessages()
+            print("gellAllChannelMemebers: \(channel.members.map{$0.username})")
         }
     }
 }
