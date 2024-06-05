@@ -58,9 +58,11 @@
 		1FD3E9852BD913310031F8FD /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD3E9842BD913310031F8FD /* MessageListView.swift */; };
 		1FE600992BEFAC80008E121B /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE600982BEFAC80008E121B /* String+Extensions.swift */; };
 		1FE6009B2BEFBD04008E121B /* MessageItems+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE6009A2BEFBD04008E121B /* MessageItems+Types.swift */; };
+		1FE808B12C10B4D90022864B /* VoiceRecorderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE808B02C10B4D90022864B /* VoiceRecorderService.swift */; };
 		1FEC7AC62BF9C3BC001DBE20 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEC7AC52BF9C3BC001DBE20 /* Date+Extensions.swift */; };
 		1FEEFF212BE3A00B00FBCE3C /* RootSrceen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEEFF202BE3A00B00FBCE3C /* RootSrceen.swift */; };
 		1FEEFF242BE3A03500FBCE3C /* RootScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEEFF232BE3A03500FBCE3C /* RootScreenModel.swift */; };
+		1FF6638C2C10D37C00DE61BF /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6638B2C10D37C00DE61BF /* TimeInterval+Extensions.swift */; };
 		1FF667102BD6D1A30087A87E /* Whatsapp_CloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6670F2BD6D1A30087A87E /* Whatsapp_CloneApp.swift */; };
 		1FF667142BD6D1A50087A87E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF667132BD6D1A50087A87E /* Assets.xcassets */; };
 		1FF667172BD6D1A50087A87E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF667162BD6D1A50087A87E /* Preview Assets.xcassets */; };
@@ -117,9 +119,11 @@
 		1FD3E9842BD913310031F8FD /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
 		1FE600982BEFAC80008E121B /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		1FE6009A2BEFBD04008E121B /* MessageItems+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageItems+Types.swift"; sourceTree = "<group>"; };
+		1FE808B02C10B4D90022864B /* VoiceRecorderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecorderService.swift; sourceTree = "<group>"; };
 		1FEC7AC52BF9C3BC001DBE20 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		1FEEFF202BE3A00B00FBCE3C /* RootSrceen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootSrceen.swift; sourceTree = "<group>"; };
 		1FEEFF232BE3A03500FBCE3C /* RootScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootScreenModel.swift; sourceTree = "<group>"; };
+		1FF6638B2C10D37C00DE61BF /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		1FF6670C2BD6D1A30087A87E /* Whatsapp_Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whatsapp_Clone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF6670F2BD6D1A30087A87E /* Whatsapp_CloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whatsapp_CloneApp.swift; sourceTree = "<group>"; };
 		1FF667132BD6D1A50087A87E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 			children = (
 				1F4567E62BEF420800B67EAA /* UserService.swift */,
 				1FFF1B2D2BF1E18700FF5058 /* MessageService.swift */,
+				1FE808B02C10B4D90022864B /* VoiceRecorderService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -404,6 +409,7 @@
 				1FEC7AC52BF9C3BC001DBE20 /* Date+Extensions.swift */,
 				1F74B50C2C063E460062D9FF /* PhotoPickerItem+Extension.swift */,
 				1F74B5102C0643680062D9FF /* URL+Extnsions.swift */,
+				1FF6638B2C10D37C00DE61BF /* TimeInterval+Extensions.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -572,6 +578,8 @@
 				1FBA3B822BF894BE00FE2620 /* CircularProfileImageView.swift in Sources */,
 				1F9BC7EC2BDD117200A524BE /* AuthButton.swift in Sources */,
 				1FA219982BDBB28F004AFEBB /* BubbuleTextView.swift in Sources */,
+				1FE808B12C10B4D90022864B /* VoiceRecorderService.swift in Sources */,
+				1FF6638C2C10D37C00DE61BF /* TimeInterval+Extensions.swift in Sources */,
 				1FCAB8B22BD8E25600B04AA5 /* SettingItemView.swift in Sources */,
 				1F86332C2BE4F77E002EC595 /* UserItem.swift in Sources */,
 				1F9BC7E82BDD0BDA00A524BE /* AuthHeaderView.swift in Sources */,
@@ -754,6 +762,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Whatsapp_Clone/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access to thid let's you record voice messages";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -782,6 +791,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Whatsapp_Clone/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access to thid let's you record voice messages";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

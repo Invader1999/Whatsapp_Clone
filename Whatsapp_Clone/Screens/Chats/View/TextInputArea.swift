@@ -8,18 +8,28 @@
 import SwiftUI
 
 struct TextInputArea: View {
+    @State private var isPulsing = false
     @Binding var textMessage:String
-    let acctionHandler:(_ action:UserAction)-> Void
+    @Binding var isRecording:Bool
+    @Binding var elapsedTime:TimeInterval
+    let actionHandler:(_ action:UserAction)-> Void
     
     private var disableSendButton:Bool{
-        return textMessage.isEmptyOrWhiteSpace
+        return textMessage.isEmptyOrWhiteSpace || isRecording
     }
     var body: some View {
         HStack(alignment:.bottom, spacing:5){
             imagePickerButton()
                 .padding(3)
+                .disabled(isRecording)
+                .grayscale(isRecording ? 0.8 : 0)
             audioRecorderButton()
-            messageTextField()
+            if !isRecording{
+                messageTextField()
+            }
+            else{
+                audioSessionIndicatorView()
+            }
             sendMessageButton()
                 .disabled(disableSendButton)
                 .grayscale(disableSendButton ? 0.8 : 0)
@@ -28,6 +38,47 @@ struct TextInputArea: View {
         .padding(.horizontal,8)
         .padding(.top,10)
         .background(.whatsAppWhite)
+        .animation(.spring,value: isRecording)
+        .onChange(of: isRecording) { oldValue, isRecording in
+            if isRecording{
+                withAnimation(.easeInOut(duration: 1.5).repeatForever()){
+                    isPulsing = true
+                }
+            }else{
+                isPulsing = false
+            }
+        }
+    }
+    
+    private func audioSessionIndicatorView()-> some View{
+        HStack{
+            Image(systemName: "circle.fill")
+                .scaleEffect(isPulsing ? 1.8 : 1.0)
+                .foregroundStyle(.red)
+                .font(.caption)
+            
+            
+            Text("Recording Audio")
+                .font(.callout)
+                .lineLimit(1)
+            
+            Spacer()
+            
+            Text(elapsedTime.formatElapsedTime)
+                .font(.callout)
+                .fontWeight(.semibold)
+        }
+        .padding(.horizontal,8)
+        .frame(height: 30)
+        .frame(maxWidth: .infinity)
+        .clipShape(Capsule())
+        .background(
+            RoundedRectangle(cornerRadius: 20,style: .continuous)
+                .fill(Color.blue.opacity(0.1))
+        )
+        .overlay {
+            textViewBorder()
+        }
     }
     
     private func messageTextField()->some View{
@@ -45,7 +96,7 @@ struct TextInputArea: View {
     
     private func imagePickerButton()->some View{
         Button{
-            acctionHandler(.presentPhotoPicker)
+            actionHandler(.presentPhotoPicker)
         }label: {
             Image(systemName: "photo.on.rectangle")
                 .font(.system(size: 22))
@@ -54,14 +105,14 @@ struct TextInputArea: View {
     
     private func audioRecorderButton()->some View{
         Button{
-            
+            actionHandler(.recordAudio)
         }label: {
-            Image(systemName: "mic.fill")
+            Image(systemName: isRecording ? "square.fill" : "mic.fill")
                 .fontWeight(.heavy)
                 .imageScale(.small)
                 .foregroundStyle(.white)
                 .padding(6)
-                .background(.blue)
+                .background(isRecording ? .red : .blue)
                 .clipShape(Circle())
                 .padding(.horizontal,3)
         }
@@ -69,7 +120,7 @@ struct TextInputArea: View {
     
     private func sendMessageButton()->some View{
         Button{
-            acctionHandler(.sendMessage)
+            actionHandler(.sendMessage)
         }label: {
             Image(systemName: "arrow.up")
                 .fontWeight(.heavy)
@@ -84,10 +135,11 @@ extension TextInputArea{
     enum UserAction{
         case presentPhotoPicker
         case sendMessage
+        case recordAudio
     }
 }
 #Preview {
-    TextInputArea(textMessage: .constant("")){action in 
+    TextInputArea(textMessage: .constant(""), isRecording: .constant(false), elapsedTime: .constant(0)) { action in
         
     }
 }
