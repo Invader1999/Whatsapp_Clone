@@ -17,7 +17,6 @@
 		1F4F27B72BECC19E00060518 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1F4F27B62BECC19E00060518 /* FirebaseAuth */; };
 		1F4F27B92BECC19E00060518 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1F4F27B82BECC19E00060518 /* FirebaseDatabase */; };
 		1F4F27BB2BECC19E00060518 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1F4F27BA2BECC19E00060518 /* FirebaseDatabaseSwift */; };
-		1F4F27BD2BECC19E00060518 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1F4F27BC2BECC19E00060518 /* FirebaseMessaging */; };
 		1F4F27BF2BECC19E00060518 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1F4F27BE2BECC19E00060518 /* FirebaseStorage */; };
 		1F4F27C22BECC7FF00060518 /* ChatPartnerPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F27C12BECC7FF00060518 /* ChatPartnerPickerViewModel.swift */; };
 		1F4F27C42BECCA0F00060518 /* GroupPartnerPickerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F27C32BECCA0F00060518 /* GroupPartnerPickerScreen.swift */; };
@@ -38,6 +37,7 @@
 		1FA2199D2BDBB40A004AFEBB /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA2199C2BDBB40A004AFEBB /* CustomModifiers.swift */; };
 		1FA2199F2BDBC610004AFEBB /* BubbleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA2199E2BDBC610004AFEBB /* BubbleImageView.swift */; };
 		1FA219A12BDBCFE3004AFEBB /* BubbleVoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA219A02BDBCFE3004AFEBB /* BubbleVoiceView.swift */; };
+		1FAC512F2C1564C100727DC9 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC512E2C1564C000727DC9 /* FirebaseHelper.swift */; };
 		1FB3D9062BE0103000D9DA96 /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB3D9052BE0103000D9DA96 /* SignUpScreen.swift */; };
 		1FB3D9092BE0133100D9DA96 /* AuthScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB3D9082BE0133100D9DA96 /* AuthScreenModel.swift */; };
 		1FBA3B7A2BF8893700FE2620 /* ChannelCreationTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA3B792BF8893700FE2620 /* ChannelCreationTextView.swift */; };
@@ -100,6 +100,8 @@
 		1FA2199C2BDBB40A004AFEBB /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
 		1FA2199E2BDBC610004AFEBB /* BubbleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleImageView.swift; sourceTree = "<group>"; };
 		1FA219A02BDBCFE3004AFEBB /* BubbleVoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleVoiceView.swift; sourceTree = "<group>"; };
+		1FAC512E2C1564C000727DC9 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
+		1FAC51302C156CDB00727DC9 /* Whatsapp-Clone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Whatsapp-Clone-Info.plist"; sourceTree = SOURCE_ROOT; };
 		1FB3D9052BE0103000D9DA96 /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		1FB3D9082BE0133100D9DA96 /* AuthScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthScreenModel.swift; sourceTree = "<group>"; };
 		1FBA3B792BF8893700FE2620 /* ChannelCreationTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationTextView.swift; sourceTree = "<group>"; };
@@ -141,7 +143,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FBA3B7F2BF8949000FE2620 /* Kingfisher in Frameworks */,
-				1F4F27BD2BECC19E00060518 /* FirebaseMessaging in Frameworks */,
 				1F4F27BB2BECC19E00060518 /* FirebaseDatabaseSwift in Frameworks */,
 				1F4F27B92BECC19E00060518 /* FirebaseDatabase in Frameworks */,
 				1F4F27BF2BECC19E00060518 /* FirebaseStorage in Frameworks */,
@@ -232,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				1FA2199C2BDBB40A004AFEBB /* CustomModifiers.swift */,
+				1FAC512E2C1564C000727DC9 /* FirebaseHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -458,6 +460,7 @@
 		1FF6670E2BD6D1A30087A87E /* Whatsapp_Clone */ = {
 			isa = PBXGroup;
 			children = (
+				1FAC51302C156CDB00727DC9 /* Whatsapp-Clone-Info.plist */,
 				1FBA3B802BF894A000FE2620 /* Components */,
 				1FE600972BEFAA72008E121B /* Extenstions */,
 				1F4567E52BEF41F700B67EAA /* Service */,
@@ -509,7 +512,6 @@
 				1F4F27B62BECC19E00060518 /* FirebaseAuth */,
 				1F4F27B82BECC19E00060518 /* FirebaseDatabase */,
 				1F4F27BA2BECC19E00060518 /* FirebaseDatabaseSwift */,
-				1F4F27BC2BECC19E00060518 /* FirebaseMessaging */,
 				1F4F27BE2BECC19E00060518 /* FirebaseStorage */,
 				1FBA3B7E2BF8949000FE2620 /* Kingfisher */,
 			);
@@ -572,6 +574,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FAC512F2C1564C100727DC9 /* FirebaseHelper.swift in Sources */,
 				1FF9F29E2BD76D790076D685 /* UpdatesTabScreen.swift in Sources */,
 				1FB3D9092BE0133100D9DA96 /* AuthScreenModel.swift in Sources */,
 				1F86332F2BE4F7EC002EC595 /* FirebaseConstants.swift in Sources */,
@@ -762,6 +765,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Whatsapp_Clone/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Whatsapp-Clone-Info.plist";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access to thid let's you record voice messages";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -791,6 +795,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Whatsapp_Clone/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Whatsapp-Clone-Info.plist";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access to thid let's you record voice messages";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -867,11 +872,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1F4F27B52BECC19E00060518 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabaseSwift;
-		};
-		1F4F27BC2BECC19E00060518 /* FirebaseMessaging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1F4F27B52BECC19E00060518 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
 		};
 		1F4F27BE2BECC19E00060518 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;

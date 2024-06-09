@@ -17,7 +17,7 @@ final class RootScreenModel{
        cancellable =  AuthManager.shared.authState.receive(on: DispatchQueue.main)
             .sink {[weak self] latestAuthState in
                 self?.authState = latestAuthState
-                print(self?.authState)
+                print(self?.authState ?? .pending)
             }
         
 //        AuthManager.testAccounts.forEach { email in

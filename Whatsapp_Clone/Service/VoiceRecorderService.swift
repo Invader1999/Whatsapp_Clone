@@ -107,7 +107,7 @@ final class VoiceRecorderService{
             .sink{[weak self] _ in
                 guard let startTime = self?.startTime else{return}
                 self?.elapsedTime = Date().timeIntervalSince(startTime)
-                print("VoiceRecorderService: elapsedTime \(self?.elapsedTime)")
+                print("VoiceRecorderService: elapsedTime \(self?.elapsedTime ?? 00)")
             }
     }
     
