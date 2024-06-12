@@ -48,6 +48,9 @@ final class MessageListController:UIViewController{
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.gray.withAlphaComponent(0.4)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.contentInset = .init(top: 0, left: 0, bottom: 60, right: 0)
+        tableView.scrollIndicatorInsets = .init(top: 0, left: 0, bottom: 60, right: 0)
+        tableView.keyboardDismissMode = .onDrag
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -86,6 +89,16 @@ final class MessageListController:UIViewController{
                 self?.tableView.reloadData()
             }
             .store(in: &subscriptions)
+        
+        viewModel.$scrollToBottomRequest
+            .debounce(for: .milliseconds(delay), scheduler: DispatchQueue.main)
+            .sink { [weak self] scrollRequest in
+                if scrollRequest.scroll{
+                    self?.tableView.scrollToLastRow(at: .bottom, animated: scrollRequest.isAnimated)
+                }
+            }
+            .store(in: &subscriptions)
+            
     }
 
 }
@@ -133,8 +146,21 @@ extension MessageListController:UITableViewDelegate, UITableViewDataSource{
     }
 }
 
+// This is the funationality to scroll to bottom in table view
+private extension UITableView{
+    func scrollToLastRow(at scrollPosition:UITableView.ScrollPosition,animated:Bool){
+        guard numberOfRows(inSection: numberOfSections - 1) > 0 else {return}
+        
+        let lastSectionIndex = numberOfSections - 1
+        let lastRowIndex = numberOfRows(inSection: lastSectionIndex) - 1
+        let lastRowIndexPath = IndexPath(row: lastRowIndex, section: lastSectionIndex)
+        scrollToRow(at: lastRowIndexPath, at: scrollPosition, animated: animated)
+    }
+}
 
 #Preview{
     MessageListView(ChatRoomViewModel(.placeholder))
         .ignoresSafeArea()
 }
+
+

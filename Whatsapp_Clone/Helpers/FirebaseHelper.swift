@@ -10,7 +10,7 @@ import UIKit
 import FirebaseStorage
 
 typealias UploadCompletion = (Result<URL,Error>) -> Void
-typealias ProgressHandler = (Double) -> Error
+typealias ProgressHandler = (Double) -> Void
 
 enum UploadError:Error{
     case failedToUploadImage(_ description:String)

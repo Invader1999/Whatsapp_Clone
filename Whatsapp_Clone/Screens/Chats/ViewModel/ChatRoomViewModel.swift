@@ -22,6 +22,8 @@ final class ChatRoomViewModel: ObservableObject {
     @Published var videoPlayerState:(show:Bool,player:AVPlayer?) = (false,nil)
     @Published var isRecordingVoiceMessage = false
     @Published var elapsedVoiceMessageTime:TimeInterval = 0
+    @Published var scrollToBottomRequest:(scroll:Bool,isAnimated:Bool) = (false,false)
+    
     
     private(set) var channel: ChannelItem
     private var subscriptions = Set<AnyCancellable>()
@@ -31,6 +33,11 @@ final class ChatRoomViewModel: ObservableObject {
     var showPhotosPikcerPreview: Bool {
         return !mediaAttachments.isEmpty || !photosPickerItems.isEmpty
     }
+    
+    var disableSendButton:Bool{
+        return mediaAttachments.isEmpty && textMessage.isEmptyOrWhiteSpace
+    }
+    
     
     init(_ channel: ChannelItem) {
         self.channel = channel
@@ -81,8 +88,67 @@ final class ChatRoomViewModel: ObservableObject {
     
     func sendMessage() {
         guard let currentUser else { return }
-        MessageService.sendTextMessage(to: channel, from: currentUser, textMessage) { [weak self] in
-            self?.textMessage = ""
+        if mediaAttachments.isEmpty{
+            MessageService.sendTextMessage(to: channel, from: currentUser, textMessage) { [weak self] in
+                self?.textMessage = ""
+            }
+        }else{
+            sendMultipleMessages(textMessage, attachments: mediaAttachments)
+            clearTextInputArea()
+        }
+    }
+    
+    private func clearTextInputArea(){
+        mediaAttachments.removeAll()
+        photosPickerItems.removeAll()
+        textMessage = ""
+        UIApplication.dismissKeyboard()
+    }
+    
+    private func sendMultipleMessages(_ text:String,attachments:[MediaAttachment]){
+        mediaAttachments.forEach { attachment in
+            switch attachment.type {
+            case .photo:
+                sendPhotoMessage(text: text, attachment)
+            case .video:
+                break
+            case .audio:
+                break
+            }
+        }
+    }
+    
+    private func sendPhotoMessage(text:String,_ attachment:MediaAttachment){
+        
+        uploadImageToStorage(attachment) {[weak self] imageUrl in
+            guard let self = self, let currentUser else {return}
+            print("Uploaded Image To Storage: ")
+            let uploadPrams = MessageUploadParams(channel: channel, text: text, type: .photo, attachment: attachment, thumbnailURL:imageUrl.absoluteString, sender: currentUser)
+            
+            MessageService.sendMediaMessage(to: channel, params: uploadPrams) {[weak self] in 
+                print("Uploaded Image To Database: ")
+                self?.scrollToBottom(isAnimated: true)
+            }
+        }
+        
+    }
+    
+    private func scrollToBottom(isAnimated:Bool){
+        scrollToBottomRequest.scroll = true
+        scrollToBottomRequest.isAnimated = isAnimated
+    }
+    
+    
+    private func uploadImageToStorage(_ attachment:MediaAttachment, completion:@escaping(_ imageUrl:URL) -> Void){
+        FirebaseHelper.uploadImage(attachment.thumbnail, for: .photoMessage) { result in
+            switch result{
+            case .success(let imageUrl):
+                completion(imageUrl)
+            case .failure(let error):
+                print("Failed To Upload Image To Storage: \(error.localizedDescription)")
+            }
+        } progressHandler: { progress in
+            print("UPLOAD IMAGE PROGRESS: \(progress)")
         }
     }
     

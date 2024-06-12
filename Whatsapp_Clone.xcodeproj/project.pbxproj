@@ -14,10 +14,6 @@
 		1F4567E72BEF420800B67EAA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4567E62BEF420800B67EAA /* UserService.swift */; };
 		1F4567EA2BEF5D7100B67EAA /* ChannelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4567E92BEF5D7100B67EAA /* ChannelItem.swift */; };
 		1F4567EC2BEF60EC00B67EAA /* ChannelTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4567EB2BEF60EC00B67EAA /* ChannelTabViewModel.swift */; };
-		1F4F27B72BECC19E00060518 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1F4F27B62BECC19E00060518 /* FirebaseAuth */; };
-		1F4F27B92BECC19E00060518 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1F4F27B82BECC19E00060518 /* FirebaseDatabase */; };
-		1F4F27BB2BECC19E00060518 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1F4F27BA2BECC19E00060518 /* FirebaseDatabaseSwift */; };
-		1F4F27BF2BECC19E00060518 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1F4F27BE2BECC19E00060518 /* FirebaseStorage */; };
 		1F4F27C22BECC7FF00060518 /* ChatPartnerPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F27C12BECC7FF00060518 /* ChatPartnerPickerViewModel.swift */; };
 		1F4F27C42BECCA0F00060518 /* GroupPartnerPickerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F27C32BECCA0F00060518 /* GroupPartnerPickerScreen.swift */; };
 		1F74B50D2C063E460062D9FF /* PhotoPickerItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74B50C2C063E460062D9FF /* PhotoPickerItem+Extension.swift */; };
@@ -42,10 +38,15 @@
 		1FB3D9092BE0133100D9DA96 /* AuthScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB3D9082BE0133100D9DA96 /* AuthScreenModel.swift */; };
 		1FBA3B7A2BF8893700FE2620 /* ChannelCreationTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA3B792BF8893700FE2620 /* ChannelCreationTextView.swift */; };
 		1FBA3B7C2BF88B2900FE2620 /* AdminMessageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA3B7B2BF88B2900FE2620 /* AdminMessageTextView.swift */; };
-		1FBA3B7F2BF8949000FE2620 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1FBA3B7E2BF8949000FE2620 /* Kingfisher */; };
 		1FBA3B822BF894BE00FE2620 /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA3B812BF894BE00FE2620 /* CircularProfileImageView.swift */; };
 		1FBC12CD2C0050E60071178C /* MediaAttachmentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBC12CC2C0050E60071178C /* MediaAttachmentPreview.swift */; };
 		1FBE85A22BE0ADF20004712F /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE85A12BE0ADF20004712F /* AuthProvider.swift */; };
+		1FC4FE772C183753001D33BE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1FC4FE762C183753001D33BE /* FirebaseAuth */; };
+		1FC4FE792C183753001D33BE /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1FC4FE782C183753001D33BE /* FirebaseDatabase */; };
+		1FC4FE7B2C183753001D33BE /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1FC4FE7A2C183753001D33BE /* FirebaseDatabaseSwift */; };
+		1FC4FE7D2C183753001D33BE /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1FC4FE7C2C183753001D33BE /* FirebaseMessaging */; };
+		1FC4FE7F2C183753001D33BE /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1FC4FE7E2C183753001D33BE /* FirebaseStorage */; };
+		1FC4FE822C18377D001D33BE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1FC4FE812C18377D001D33BE /* Kingfisher */; };
 		1FCAB8A72BD8D25600B04AA5 /* CommunityTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAB8A62BD8D25600B04AA5 /* CommunityTabScreen.swift */; };
 		1FCAB8AB2BD8DC1900B04AA5 /* ChannelTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAB8AA2BD8DC1900B04AA5 /* ChannelTabScreen.swift */; };
 		1FCAB8AD2BD8DF0200B04AA5 /* ChatItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAB8AC2BD8DF0200B04AA5 /* ChatItemView.swift */; };
@@ -69,6 +70,8 @@
 		1FF6673A2BD6D4340087A87E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF667392BD6D4340087A87E /* MainTabView.swift */; };
 		1FF9F29E2BD76D790076D685 /* UpdatesTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9F29D2BD76D790076D685 /* UpdatesTabScreen.swift */; };
 		1FF9F2A02BD77B3A0076D685 /* CallTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9F29F2BD77B3A0076D685 /* CallTabScreen.swift */; };
+		1FFB66462C1A05D700E744AB /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB66452C1A05D700E744AB /* UIApplication+Extensions.swift */; };
+		1FFB66482C1A084300E744AB /* UIWindowScene+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB66472C1A084300E744AB /* UIWindowScene+Extensions.swift */; };
 		1FFF1B2C2BF1DFDC00FF5058 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF1B2B2BF1DFDC00FF5058 /* ChatRoomViewModel.swift */; };
 		1FFF1B2E2BF1E18700FF5058 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF1B2D2BF1E18700FF5058 /* MessageService.swift */; };
 /* End PBXBuildFile section */
@@ -133,6 +136,8 @@
 		1FF667392BD6D4340087A87E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		1FF9F29D2BD76D790076D685 /* UpdatesTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesTabScreen.swift; sourceTree = "<group>"; };
 		1FF9F29F2BD77B3A0076D685 /* CallTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTabScreen.swift; sourceTree = "<group>"; };
+		1FFB66452C1A05D700E744AB /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
+		1FFB66472C1A084300E744AB /* UIWindowScene+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindowScene+Extensions.swift"; sourceTree = "<group>"; };
 		1FFF1B2B2BF1DFDC00FF5058 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
 		1FFF1B2D2BF1E18700FF5058 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,11 +147,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FBA3B7F2BF8949000FE2620 /* Kingfisher in Frameworks */,
-				1F4F27BB2BECC19E00060518 /* FirebaseDatabaseSwift in Frameworks */,
-				1F4F27B92BECC19E00060518 /* FirebaseDatabase in Frameworks */,
-				1F4F27BF2BECC19E00060518 /* FirebaseStorage in Frameworks */,
-				1F4F27B72BECC19E00060518 /* FirebaseAuth in Frameworks */,
+				1FC4FE822C18377D001D33BE /* Kingfisher in Frameworks */,
+				1FC4FE7D2C183753001D33BE /* FirebaseMessaging in Frameworks */,
+				1FC4FE7B2C183753001D33BE /* FirebaseDatabaseSwift in Frameworks */,
+				1FC4FE792C183753001D33BE /* FirebaseDatabase in Frameworks */,
+				1FC4FE7F2C183753001D33BE /* FirebaseStorage in Frameworks */,
+				1FC4FE772C183753001D33BE /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +418,8 @@
 				1F74B50C2C063E460062D9FF /* PhotoPickerItem+Extension.swift */,
 				1F74B5102C0643680062D9FF /* URL+Extnsions.swift */,
 				1FF6638B2C10D37C00DE61BF /* TimeInterval+Extensions.swift */,
+				1FFB66452C1A05D700E744AB /* UIApplication+Extensions.swift */,
+				1FFB66472C1A084300E744AB /* UIWindowScene+Extensions.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -509,11 +517,12 @@
 			);
 			name = Whatsapp_Clone;
 			packageProductDependencies = (
-				1F4F27B62BECC19E00060518 /* FirebaseAuth */,
-				1F4F27B82BECC19E00060518 /* FirebaseDatabase */,
-				1F4F27BA2BECC19E00060518 /* FirebaseDatabaseSwift */,
-				1F4F27BE2BECC19E00060518 /* FirebaseStorage */,
-				1FBA3B7E2BF8949000FE2620 /* Kingfisher */,
+				1FC4FE762C183753001D33BE /* FirebaseAuth */,
+				1FC4FE782C183753001D33BE /* FirebaseDatabase */,
+				1FC4FE7A2C183753001D33BE /* FirebaseDatabaseSwift */,
+				1FC4FE7C2C183753001D33BE /* FirebaseMessaging */,
+				1FC4FE7E2C183753001D33BE /* FirebaseStorage */,
+				1FC4FE812C18377D001D33BE /* Kingfisher */,
 			);
 			productName = Whatsapp_Clone;
 			productReference = 1FF6670C2BD6D1A30087A87E /* Whatsapp_Clone.app */;
@@ -544,8 +553,8 @@
 			);
 			mainGroup = 1FF667032BD6D1A30087A87E;
 			packageReferences = (
-				1F4F27B52BECC19E00060518 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				1FBA3B7D2BF8948F00FE2620 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				1FC4FE752C183753001D33BE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1FC4FE802C18377D001D33BE /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 1FF6670D2BD6D1A30087A87E /* Products */;
 			projectDirPath = "";
@@ -576,6 +585,7 @@
 			files = (
 				1FAC512F2C1564C100727DC9 /* FirebaseHelper.swift in Sources */,
 				1FF9F29E2BD76D790076D685 /* UpdatesTabScreen.swift in Sources */,
+				1FFB66462C1A05D700E744AB /* UIApplication+Extensions.swift in Sources */,
 				1FB3D9092BE0133100D9DA96 /* AuthScreenModel.swift in Sources */,
 				1F86332F2BE4F7EC002EC595 /* FirebaseConstants.swift in Sources */,
 				1FBA3B822BF894BE00FE2620 /* CircularProfileImageView.swift in Sources */,
@@ -597,6 +607,7 @@
 				1FD3E9832BD911040031F8FD /* MessageListController.swift in Sources */,
 				1FA2199A2BDBB32F004AFEBB /* BubbleTailView.swift in Sources */,
 				1FFF1B2E2BF1E18700FF5058 /* MessageService.swift in Sources */,
+				1FFB66482C1A084300E744AB /* UIWindowScene+Extensions.swift in Sources */,
 				1FB3D9062BE0103000D9DA96 /* SignUpScreen.swift in Sources */,
 				1FFF1B2C2BF1DFDC00FF5058 /* ChatRoomViewModel.swift in Sources */,
 				1FBC12CD2C0050E60071178C /* MediaAttachmentPreview.swift in Sources */,
@@ -688,7 +699,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -745,7 +756,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -772,6 +783,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -779,9 +791,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hemanth.Whatsapp-Clone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -802,6 +818,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -809,9 +826,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hemanth.Whatsapp-Clone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -839,48 +860,53 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1F4F27B52BECC19E00060518 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		1FC4FE752C183753001D33BE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.25.0;
+				minimumVersion = 10.27.0;
 			};
 		};
-		1FBA3B7D2BF8948F00FE2620 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		1FC4FE802C18377D001D33BE /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.11.0;
+				minimumVersion = 7.12.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1F4F27B62BECC19E00060518 /* FirebaseAuth */ = {
+		1FC4FE762C183753001D33BE /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1F4F27B52BECC19E00060518 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 1FC4FE752C183753001D33BE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		1F4F27B82BECC19E00060518 /* FirebaseDatabase */ = {
+		1FC4FE782C183753001D33BE /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1F4F27B52BECC19E00060518 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 1FC4FE752C183753001D33BE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
 		};
-		1F4F27BA2BECC19E00060518 /* FirebaseDatabaseSwift */ = {
+		1FC4FE7A2C183753001D33BE /* FirebaseDatabaseSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1F4F27B52BECC19E00060518 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 1FC4FE752C183753001D33BE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabaseSwift;
 		};
-		1F4F27BE2BECC19E00060518 /* FirebaseStorage */ = {
+		1FC4FE7C2C183753001D33BE /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1F4F27B52BECC19E00060518 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 1FC4FE752C183753001D33BE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		1FC4FE7E2C183753001D33BE /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1FC4FE752C183753001D33BE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
 		};
-		1FBA3B7E2BF8949000FE2620 /* Kingfisher */ = {
+		1FC4FE812C18377D001D33BE /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1FBA3B7D2BF8948F00FE2620 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 1FC4FE802C18377D001D33BE /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */

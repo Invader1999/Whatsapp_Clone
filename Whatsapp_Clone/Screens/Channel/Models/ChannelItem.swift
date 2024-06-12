@@ -113,4 +113,5 @@ extension String {
     static let thumbnailUrl = "thumbnailUrl"
     static let members = "members"
     static let createdBy = "createdBy"
+    static let lastMessageType = "lastMessageType"
 }
