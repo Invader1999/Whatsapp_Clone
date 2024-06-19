@@ -111,9 +111,9 @@ final class ChatRoomViewModel: ObservableObject {
             case .photo:
                 sendPhotoMessage(text: text, attachment)
             case .video:
-                break
+                sendVideoMessage(text:text, attachment)
             case .audio:
-                break
+                sendVoiceMessage(text:text, attachment)
             }
         }
     }
@@ -133,6 +133,38 @@ final class ChatRoomViewModel: ObservableObject {
         
     }
     
+    
+    private func sendVideoMessage(text:String,_ attachment:MediaAttachment){
+        
+        //Uploading the video file to storage bucket
+        uploadFileToStorage(for: .videoMessage, attachment) {[weak self] videoURL in
+            self?.uploadImageToStorage(attachment) {[weak self] thumbnailURL in
+                guard let self = self, let currentUser  else {return}
+                let uploadParams = MessageUploadParams(channel: self.channel, text: text, type: .video, attachment: attachment, thumbnailURL:thumbnailURL.absoluteString, videoURL:videoURL.absoluteString, sender: currentUser)
+                
+                //saves the metadata and urls in storage
+                MessageService.sendMediaMessage(to: self.channel, params: uploadParams) {[weak self] in
+                    self?.scrollToBottom(isAnimated: true)
+                }
+            }
+        }
+    }
+    
+    private func sendVoiceMessage(text:String,_ attachment:MediaAttachment){
+        //Uploading the audio file to storage bucket
+        guard let audioDuration = attachment.audioDuration,let currentUser else {return}
+        uploadFileToStorage(for: .voiceMessage, attachment) { [weak self] fileURL in
+            guard let self else {return}
+            let uploadParams = MessageUploadParams(channel: self.channel, text: text, type: .audio, attachment: attachment, sender: currentUser,audioURL:fileURL.absoluteString,audioDuration: audioDuration)
+            
+            MessageService.sendMediaMessage(to: self.channel, params: uploadParams) {[weak self] in
+                self?.scrollToBottom(isAnimated: true)
+            }
+        }
+    }
+    
+    
+    
     private func scrollToBottom(isAnimated:Bool){
         scrollToBottomRequest.scroll = true
         scrollToBottomRequest.isAnimated = isAnimated
@@ -151,6 +183,24 @@ final class ChatRoomViewModel: ObservableObject {
             print("UPLOAD IMAGE PROGRESS: \(progress)")
         }
     }
+    
+    
+    private func uploadFileToStorage(for uploadType: FirebaseHelper.UploadType,_ attachment:MediaAttachment, completion:@escaping(_ fileUrl:URL) -> Void){
+        guard let fileToUpload = attachment.fileURL else { return }
+        FirebaseHelper.uploadFile(for: uploadType, fileURL: fileToUpload) { result in
+            switch result{
+            case .success(let fileURL):
+                completion(fileURL)
+            case .failure(let error):
+                print("Failed To Upload FILE To Storage: \(error.localizedDescription)")
+            }
+        } progressHandler: { progress in
+            print("UPLOAD FILE PROGRESS: \(progress)")
+        }
+
+    }
+    
+    
     
     private func getMessages() {
         MessageService.getMessages(for: channel) { [weak self] messages in
