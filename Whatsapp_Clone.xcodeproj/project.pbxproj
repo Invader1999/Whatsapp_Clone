@@ -63,6 +63,7 @@
 		1FEC7AC62BF9C3BC001DBE20 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEC7AC52BF9C3BC001DBE20 /* Date+Extensions.swift */; };
 		1FEEFF212BE3A00B00FBCE3C /* RootSrceen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEEFF202BE3A00B00FBCE3C /* RootSrceen.swift */; };
 		1FEEFF242BE3A03500FBCE3C /* RootScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEEFF232BE3A03500FBCE3C /* RootScreenModel.swift */; };
+		1FF268932C2731A200FF1FC1 /* VoiceMessagePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF268922C2731A200FF1FC1 /* VoiceMessagePlayer.swift */; };
 		1FF6638C2C10D37C00DE61BF /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6638B2C10D37C00DE61BF /* TimeInterval+Extensions.swift */; };
 		1FF667102BD6D1A30087A87E /* Whatsapp_CloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6670F2BD6D1A30087A87E /* Whatsapp_CloneApp.swift */; };
 		1FF667142BD6D1A50087A87E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF667132BD6D1A50087A87E /* Assets.xcassets */; };
@@ -128,6 +129,7 @@
 		1FEC7AC52BF9C3BC001DBE20 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		1FEEFF202BE3A00B00FBCE3C /* RootSrceen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootSrceen.swift; sourceTree = "<group>"; };
 		1FEEFF232BE3A03500FBCE3C /* RootScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootScreenModel.swift; sourceTree = "<group>"; };
+		1FF268922C2731A200FF1FC1 /* VoiceMessagePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceMessagePlayer.swift; sourceTree = "<group>"; };
 		1FF6638B2C10D37C00DE61BF /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		1FF6670C2BD6D1A30087A87E /* Whatsapp_Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whatsapp_Clone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF6670F2BD6D1A30087A87E /* Whatsapp_CloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whatsapp_CloneApp.swift; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 			isa = PBXGroup;
 			children = (
 				1FFF1B2B2BF1DFDC00FF5058 /* ChatRoomViewModel.swift */,
+				1FF268922C2731A200FF1FC1 /* VoiceMessagePlayer.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				1F8633312BE4FEB5002EC595 /* ChatPartnerPickerScreen.swift in Sources */,
 				1FBA3B7A2BF8893700FE2620 /* ChannelCreationTextView.swift in Sources */,
 				1F9BC7E62BDD0B3600A524BE /* LoginScreen.swift in Sources */,
+				1FF268932C2731A200FF1FC1 /* VoiceMessagePlayer.swift in Sources */,
 				1F4567E42BEF3A0E00B67EAA /* NewGroupSetupScreen.swift in Sources */,
 				1FF667102BD6D1A30087A87E /* Whatsapp_CloneApp.swift in Sources */,
 				1FD3E9852BD913310031F8FD /* MessageListView.swift in Sources */,
