@@ -11,11 +11,11 @@ import AVFoundation
 final class VoiceMessagePlayer:ObservableObject{
     
     private var player:AVPlayer?
-    private var currentURL:URL?
+    private(set) var currentURL:URL?
     
-    private var playerItem:AVPlayerItem?
-    private var playbackState = PlayerbackState.stopped
-    private var currentTime = CMTime.zero
+    @Published private(set) var playerItem:AVPlayerItem?
+    @Published private(set) var playbackState = PlayerbackState.stopped
+    @Published private(set) var currentTime = CMTime.zero
     private var currentTimeObserver:Any?
     
     
@@ -38,9 +38,9 @@ final class VoiceMessagePlayer:ObservableObject{
         }
     }
     
-    func pause(){
+    func pauseAudio(){
         player?.pause()
-        playbackState = .pause
+        playbackState = .paused
     }
     
     func seek(to timeInterval:TimeInterval){
@@ -54,7 +54,7 @@ final class VoiceMessagePlayer:ObservableObject{
     //private method
     
     private func resumePlaying(){
-        if playbackState == .pause || playbackState == .stopped{
+        if playbackState == .paused || playbackState == .stopped{
             player?.play()
             playbackState = .playing
         }
@@ -99,6 +99,9 @@ final class VoiceMessagePlayer:ObservableObject{
 
 extension VoiceMessagePlayer{
     enum PlayerbackState{
-        case stopped,playing,pause
+        case stopped,playing,paused
+        var icon:String{
+            return self == .playing ? "pause.fill" : "play.fill"
+        }
     }
 }

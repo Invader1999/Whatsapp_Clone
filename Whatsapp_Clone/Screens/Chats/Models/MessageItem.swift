@@ -69,6 +69,10 @@ struct MessageItem:Identifiable{
         return photoWidth
     }
     
+    var audioDurationInString:String{
+        return audioDuration?.formatElapsedTime ?? "00:00"
+    }
+    
     static let stbMessages :[MessageItem] = [
         MessageItem(id:UUID().uuidString, isGroupChat: false, text: "Hello Everyone", type: .text, ownerUid: "3", timeStamp: Date(), thumbnailUrl: nil,thumbnailHeight: 0,thumbnailWidth: 0),
         MessageItem(id:UUID().uuidString, isGroupChat: true, text: "How are you", type: .photo, ownerUid: "4", timeStamp: Date(), thumbnailUrl: nil,thumbnailHeight: 0,thumbnailWidth: 0),
