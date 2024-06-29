@@ -33,6 +33,7 @@
 		1FA2199D2BDBB40A004AFEBB /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA2199C2BDBB40A004AFEBB /* CustomModifiers.swift */; };
 		1FA2199F2BDBC610004AFEBB /* BubbleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA2199E2BDBC610004AFEBB /* BubbleImageView.swift */; };
 		1FA219A12BDBCFE3004AFEBB /* BubbleVoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA219A02BDBCFE3004AFEBB /* BubbleVoiceView.swift */; };
+		1FABC3852C2F076800402657 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FABC3842C2F076800402657 /* Haptics.swift */; };
 		1FAC512F2C1564C100727DC9 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC512E2C1564C000727DC9 /* FirebaseHelper.swift */; };
 		1FB3D9062BE0103000D9DA96 /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB3D9052BE0103000D9DA96 /* SignUpScreen.swift */; };
 		1FB3D9092BE0133100D9DA96 /* AuthScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB3D9082BE0133100D9DA96 /* AuthScreenModel.swift */; };
@@ -104,6 +105,7 @@
 		1FA2199C2BDBB40A004AFEBB /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
 		1FA2199E2BDBC610004AFEBB /* BubbleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleImageView.swift; sourceTree = "<group>"; };
 		1FA219A02BDBCFE3004AFEBB /* BubbleVoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleVoiceView.swift; sourceTree = "<group>"; };
+		1FABC3842C2F076800402657 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		1FAC512E2C1564C000727DC9 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		1FAC51302C156CDB00727DC9 /* Whatsapp-Clone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Whatsapp-Clone-Info.plist"; sourceTree = SOURCE_ROOT; };
 		1FB3D9052BE0103000D9DA96 /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			children = (
 				1FA2199C2BDBB40A004AFEBB /* CustomModifiers.swift */,
 				1FAC512E2C1564C000727DC9 /* FirebaseHelper.swift */,
+				1FABC3842C2F076800402657 /* Haptics.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				1FF6638C2C10D37C00DE61BF /* TimeInterval+Extensions.swift in Sources */,
 				1FCAB8B22BD8E25600B04AA5 /* SettingItemView.swift in Sources */,
 				1F86332C2BE4F77E002EC595 /* UserItem.swift in Sources */,
+				1FABC3852C2F076800402657 /* Haptics.swift in Sources */,
 				1F9BC7E82BDD0BDA00A524BE /* AuthHeaderView.swift in Sources */,
 				1F4567EC2BEF60EC00B67EAA /* ChannelTabViewModel.swift in Sources */,
 				1F4567E22BEF318600B67EAA /* SelectedChatPartnerView.swift in Sources */,
