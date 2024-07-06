@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F082F4F2BEBE5C500C2A2F6 /* ChatPartnerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F082F4E2BEBE5C500C2A2F6 /* ChatPartnerRowView.swift */; };
 		1F088F7C2C0986BD001E8A61 /* MediaPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F088F7B2C0986BD001E8A61 /* MediaPlayerView.swift */; };
+		1F311C6D2C3986AF00E93594 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F311C6C2C3986AF00E93594 /* BubbleView.swift */; };
 		1F4567E22BEF318600B67EAA /* SelectedChatPartnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4567E12BEF318600B67EAA /* SelectedChatPartnerView.swift */; };
 		1F4567E42BEF3A0E00B67EAA /* NewGroupSetupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4567E32BEF3A0E00B67EAA /* NewGroupSetupScreen.swift */; };
 		1F4567E72BEF420800B67EAA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4567E62BEF420800B67EAA /* UserService.swift */; };
@@ -81,6 +82,7 @@
 /* Begin PBXFileReference section */
 		1F082F4E2BEBE5C500C2A2F6 /* ChatPartnerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPartnerRowView.swift; sourceTree = "<group>"; };
 		1F088F7B2C0986BD001E8A61 /* MediaPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerView.swift; sourceTree = "<group>"; };
+		1F311C6C2C3986AF00E93594 /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
 		1F4567E12BEF318600B67EAA /* SelectedChatPartnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedChatPartnerView.swift; sourceTree = "<group>"; };
 		1F4567E32BEF3A0E00B67EAA /* NewGroupSetupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupSetupScreen.swift; sourceTree = "<group>"; };
 		1F4567E62BEF420800B67EAA /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 				1FBA3B792BF8893700FE2620 /* ChannelCreationTextView.swift */,
 				1FBA3B7B2BF88B2900FE2620 /* AdminMessageTextView.swift */,
 				1FBC12CC2C0050E60071178C /* MediaAttachmentPreview.swift */,
+				1F311C6C2C3986AF00E93594 /* BubbleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				1FD3E9832BD911040031F8FD /* MessageListController.swift in Sources */,
 				1FA2199A2BDBB32F004AFEBB /* BubbleTailView.swift in Sources */,
 				1FFF1B2E2BF1E18700FF5058 /* MessageService.swift in Sources */,
+				1F311C6D2C3986AF00E93594 /* BubbleView.swift in Sources */,
 				1FFB66482C1A084300E744AB /* UIWindowScene+Extensions.swift in Sources */,
 				1FB3D9062BE0103000D9DA96 /* SignUpScreen.swift in Sources */,
 				1FFF1B2C2BF1DFDC00FF5058 /* ChatRoomViewModel.swift in Sources */,

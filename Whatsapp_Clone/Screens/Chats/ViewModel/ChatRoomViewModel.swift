@@ -323,4 +323,10 @@ final class ChatRoomViewModel: ObservableObject {
         guard let photoIndex = photosPickerItems.firstIndex(where: {$0.itemIdentifier == item.id}) else {return}
         photosPickerItems.remove(at: photoIndex)
     }
+    
+    func isNewDay(for message:MessageItem, at index:Int) -> Bool{
+        let priorIndex = max(0, (index - 1))
+        let priorMessage = messages[priorIndex]
+        return !message.timeStamp.isSameDay(as: priorMessage.timeStamp)
+    }
 }

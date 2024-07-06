@@ -20,6 +20,7 @@ struct AdminMessageTextView: View {
             }
             
         }
+        .frame(maxWidth: .infinity)
     }
     
     private func textView(_ text:String) -> some View{
