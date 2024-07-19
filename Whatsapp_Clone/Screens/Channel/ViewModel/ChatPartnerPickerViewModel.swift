@@ -46,7 +46,7 @@ final class ChatPartnerPickerViewModel:ObservableObject {
     var isPaginatable: Bool {
         return !users.isEmpty
     }
-    private var isDirectChannel:Bool{
+    var isDirectChannel:Bool{
         return selectedChatPartners.count == 1
     }
     
@@ -115,12 +115,14 @@ final class ChatPartnerPickerViewModel:ObservableObject {
     }
     
     func createDirectChannel(_ chatPartner:UserItem,completion: @escaping (_ newChannel:ChannelItem)-> Void){
-        selectedChatPartners.append(chatPartner)
+        if selectedChatPartners.isEmpty{
+            selectedChatPartners.append(chatPartner)
+        }
         Task{
             // if a direct channel exists in db fetch it and navigate
             if let channelId = await verfiyIfDirectChannelExists(with: chatPartner.uid){
                 let snapshot = try await FirebaseConstants.ChannelsRef.child(channelId).getData()
-                var channelDict = snapshot.value as! [String:Any]
+                let channelDict = snapshot.value as! [String:Any]
                 var directChannel = ChannelItem(channelDict)
                 directChannel.members = selectedChatPartners
                 if let currentUser{
@@ -184,11 +186,12 @@ final class ChatPartnerPickerViewModel:ObservableObject {
         var membersUids = selectedChatPartners.compactMap{$0.uid}
         membersUids.append(currentUid)
         
-            let newChannelBroadcast = AdminMessageType.channelCreation.rawValue
+        let newChannelBroadcast = AdminMessageType.channelCreation.rawValue
             
         var channelDict:[String:Any] = [
             .id: channelId,
             .lastMessage : newChannelBroadcast,
+            .lastMessageType: newChannelBroadcast,
             .creationDate: timeStamp,
             .lastMessageTimeStamp: timeStamp,
             .membersUids: membersUids,

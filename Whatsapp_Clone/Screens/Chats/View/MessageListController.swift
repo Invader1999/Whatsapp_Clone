@@ -41,6 +41,8 @@ final class MessageListController:UIViewController{
     private let viewModel: ChatRoomViewModel
     private var subscriptions = Set<AnyCancellable>()
     private let cellIdentifier = "MessageListControllerCells"
+    private var lastSrcollPosition:String?
+    
     
     private lazy var pullToRefersh:UIRefreshControl = {
         let pullToRefresh = UIRefreshControl()
@@ -83,10 +85,29 @@ final class MessageListController:UIViewController{
         return backgroundImageView
     }()
     
+    private let pullDownHUDView:UIButton = {
+        var buttonConfig = UIButton.Configuration.filled()
+        var imageConfig = UIImage.SymbolConfiguration(pointSize: 10,weight: .black)
+        
+        let image = UIImage(systemName: "arrow.up.circle.fill",withConfiguration: imageConfig)
+        buttonConfig.image = image
+        buttonConfig.baseBackgroundColor = .bubbleGreen
+        buttonConfig.baseForegroundColor = .whatsAppBlack
+        buttonConfig.imagePadding = 5
+        buttonConfig.cornerStyle = .capsule
+        let font = UIFont.systemFont(ofSize: 12, weight: .black)
+        buttonConfig.attributedTitle = AttributedString("Pull Down",attributes: AttributeContainer([NSAttributedString.Key.font:font]))
+        
+        let button = UIButton(configuration: buttonConfig)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.alpha = 0
+        return button
+    }()
+    
     private func setUpViews(){
         view.addSubview(backgroundImageView)
         view.addSubview(messagesCollectionView)
-        
+        view.addSubview(pullDownHUDView)
         
         NSLayoutConstraint.activate([
             backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -97,7 +118,13 @@ final class MessageListController:UIViewController{
             messagesCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
             messagesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             messagesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            messagesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            messagesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            
+            pullDownHUDView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide
+                .topAnchor,constant: 10),
+            pullDownHUDView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            
         ])
         
     }
@@ -119,7 +146,19 @@ final class MessageListController:UIViewController{
                 }
             }
             .store(in: &subscriptions)
-            
+        
+        viewModel.$isPaginating
+            .debounce(for: .milliseconds(delay), scheduler: DispatchQueue.main)
+            .sink { [weak self] isPaginating in
+                guard let self = self, let lastSrcollPosition else {return}
+                if isPaginating == false{
+                    guard let index = viewModel.messages.firstIndex(where: {$0.id == lastSrcollPosition}) else {return}
+                    let indexPath = IndexPath(item: index, section: 0)
+                    self.messagesCollectionView.scrollToItem(at: indexPath,at: .top, animated: false)
+                    self.pullToRefersh.endRefreshing()
+                }
+                
+            }.store(in: &subscriptions)
     }
 
 }
@@ -132,8 +171,9 @@ extension MessageListController:UICollectionViewDelegate, UICollectionViewDataSo
         cell.backgroundColor = .clear
         let message = viewModel.messages[indexPath.item]
         let isNewDay = viewModel.isNewDay(for: message, at: indexPath.item)
+        let showSenderName = viewModel.showSenderName(for: message, at: indexPath.item)
         cell.contentConfiguration = UIHostingConfiguration{
-            BubbleView(message: message, channel: viewModel.channel, isNewDay: isNewDay)
+            BubbleView(message: message, channel: viewModel.channel, isNewDay: isNewDay, showSenderName:showSenderName)
 
         }
         return cell
@@ -161,8 +201,19 @@ extension MessageListController:UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     @objc private func refreshData(){
-        messagesCollectionView.refreshControl?.endRefreshing()
+        lastSrcollPosition = viewModel.messages.first?.id
+        //messagesCollectionView.refreshControl?.endRefreshing()
+        viewModel.paginateMoreMessages()
     }
+    
+    func scrollViewDidScroll(_ scrollView:UIScrollView){
+        if scrollView.contentOffset.y <= 0{
+            pullDownHUDView.alpha =  viewModel.isPaginatable ? 1 : 0
+        }else{
+            pullDownHUDView.alpha = 0
+        }
+    }
+   
 }
 
 // This is the funationality to scroll to bottom in table view
