@@ -6,13 +6,22 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct SettingTabScreen: View {
     @State var searchText = ""
+    @StateObject private var viewModel:SettingTabViewModel
+    private let currentUser:UserItem
+    
+    init(_ currentUser:UserItem){
+        self.currentUser = currentUser
+        self._viewModel = StateObject(wrappedValue: SettingTabViewModel(currentUser))
+    }
+    
     var body: some View {
         NavigationStack{
             List{
-                SettingHeaderView()
+                SettingHeaderView(viewModel,currentUser)
                 
                 Section{
                     SettingItemView(item: .broadCastLists)
@@ -37,6 +46,21 @@ struct SettingTabScreen: View {
             .searchable(text: $searchText)
             .toolbar{
                 leadingNavItem()
+                trailingNavItem()
+            }
+            .alert(isPresent: $viewModel.showProgressHUD, view: viewModel.progresHUDView)
+            .alert(isPresent: $viewModel.showSuccessHUD, view: viewModel.successHUDView)
+            .alert("Update Your Profile",isPresented: $viewModel.showUserInfoEditor){
+                TextField("Username", text: $viewModel.name)
+                TextField("Bio", text: $viewModel.bio)
+                Button("Update"){
+                    viewModel.updateUsernameBio()
+                }
+                Button("Cancel",role: .cancel){
+                    
+                }
+            }message: {
+                Text("Enter you new username or bio")
             }
         }
     }
@@ -54,26 +78,67 @@ extension SettingTabScreen{
             .foregroundStyle(.red)
         }
     }
+    
+    
+    @ToolbarContentBuilder
+    private func trailingNavItem() -> some ToolbarContent{
+        ToolbarItem(placement: .topBarTrailing) {
+            Button("Save"){
+                viewModel.uploadProfilePhoto()
+            }
+            .bold()
+            .disabled(viewModel.disableSaveButton)
+        }
+    }
 }
 
 private struct SettingHeaderView:View {
+    private let currentUser:UserItem
+    
+    @ObservedObject private var viewModel:SettingTabViewModel
+    
+    init(_ viewModel: SettingTabViewModel,_ currentUser:UserItem) {
+        self.viewModel = viewModel
+        self.currentUser = currentUser
+    }
+    
     var body: some View {
         Section{
             HStack{
-                Circle()
-                    .frame(width: 55,height: 55)
+                profileImaageView()
                 
                 userInfoTextView()
+                    .onTapGesture {
+                        viewModel.showUserInfoEditor = true
+                    }
+                    
                 
             }
-            SettingItemView(item: .avatar)
+            
+            PhotosPicker(selection: $viewModel.selectedPhotoItem,matching: .not(.videos)) {
+                SettingItemView(item: .avatar)
+            }
+            
         }
     }
+    
+    @ViewBuilder
+    private func profileImaageView()-> some View{
+        if let profilePhoto = viewModel.profilePhoto{
+            Image(uiImage: profilePhoto.thumbnail)
+                .resizable()
+                .frame(width: 55,height: 55)
+                .clipShape(Circle())
+        }else{
+            CircularProfileImageView(currentUser.profileImageUrl,size: .custom(55))
+        }
+    }
+    
     
     private func userInfoTextView()->some View{
         VStack(alignment:.leading,spacing: 0){
             HStack{
-                Text("Hemanth Reddy")
+                Text(currentUser.username)
                     .font(.title2)
                 
                 Spacer()
@@ -86,7 +151,7 @@ private struct SettingHeaderView:View {
                     .clipShape(Circle())
             }
             
-            Text("Hey there I am using Whatsapp")
+            Text(currentUser.bioUnwrapped)
                 .foregroundStyle(.gray)
                 .font(.callout)
         }
@@ -95,5 +160,5 @@ private struct SettingHeaderView:View {
 }
 
 #Preview {
-    SettingTabScreen()
+    SettingTabScreen(.placeholder)
 }
