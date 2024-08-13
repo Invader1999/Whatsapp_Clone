@@ -49,7 +49,8 @@ final class MessageListController:UIViewController{
     private var blurView:UIVisualEffectView?
     private var focusedView:UIView?
     private var highlightedCell:UICollectionViewCell?
-    
+    private var reactionHostVC:UIViewController?
+    private var messageMenuHostVC:UIViewController?
     
     private lazy var pullToRefersh:UIRefreshControl = {
         let pullToRefresh = UIRefreshControl()
@@ -193,6 +194,7 @@ extension MessageListController:UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //logic to create snapshot of a selected Cell to display it over
+        
         guard let selectedCell = collectionView.cellForItem(at: indexPath) else {return}
         
         //selectedCell.backgroundColor = .red
@@ -221,11 +223,20 @@ extension MessageListController:UICollectionViewDelegate, UICollectionViewDataSo
         keyWindow.addSubview(focusedView)
         focusedView.addSubview(snapshotCell)
         blurView.frame = keyWindow.frame
-
+        
+        let message = viewModel.messages[indexPath.item]
+        attachMenuActionItems(to: message, in: keyWindow)
+        
         UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseIn) {
             blurView.alpha = 1
-            focusedView.center.y = keyWindow.center.y
+            focusedView.center.y = keyWindow.center.y - 60
             snapshotCell.frame = focusedView.bounds
+            
+            snapshotCell.layer.applyShadow(color: .gray, alpha: 0.2, x: 0, blur: 4, y: 2)
+//            snapshotCell.layer.shadowColor = UIColor.gray.cgColor
+//            snapshotCell.layer.shadowOpacity = 0.8
+//            snapshotCell.layer.shadowOffset = .init(width: 0, height: 2)
+//            snapshotCell.layer.shadowRadius = 4
         }
 
         
@@ -248,11 +259,47 @@ extension MessageListController:UICollectionViewDelegate, UICollectionViewDataSo
         
     }
     
+    private func attachMenuActionItems(to message:MessageItem, in window: UIWindow){
+        //Converting SwiftUI view to UIKit View
+        
+        guard let focusedView, let startingFrame else {return}
+        
+        let reactionPickerView = ReactionPickerView(message: message)
+        
+        let reactionHostVC = UIHostingController(rootView: reactionPickerView)
+        
+        reactionHostVC.view.backgroundColor = .clear
+        reactionHostVC.view.translatesAutoresizingMaskIntoConstraints = false
+        window.addSubview(reactionHostVC.view)
+        reactionHostVC.view.bottomAnchor.constraint(equalTo: focusedView.topAnchor,constant: 5).isActive = true
+        
+        reactionHostVC.view.leadingAnchor.constraint(equalTo: focusedView.leadingAnchor,constant: 20).isActive = message.direction == .received
+        
+        reactionHostVC.view.trailingAnchor.constraint(equalTo: focusedView.trailingAnchor,constant: -20).isActive = message.direction == .sent
+        
+        let messageMenuView = MessageMenuView(message: message)
+        let messageMenuHostVC = UIHostingController(rootView: messageMenuView)
+        
+        messageMenuHostVC.view.backgroundColor = .clear
+        messageMenuHostVC.view.translatesAutoresizingMaskIntoConstraints = false
+        window.addSubview(messageMenuHostVC.view)
+        messageMenuHostVC.view.topAnchor.constraint(equalTo: focusedView.bottomAnchor,constant: 0).isActive = true
+        
+        messageMenuHostVC.view.leadingAnchor.constraint(equalTo: focusedView.leadingAnchor,constant: 20).isActive = message.direction == .received
+        
+        messageMenuHostVC.view.trailingAnchor.constraint(equalTo: focusedView.trailingAnchor,constant: -20).isActive = message.direction == .sent
+        
+        self.messageMenuHostVC = messageMenuHostVC
+        self.reactionHostVC = reactionHostVC
+    }
+    
    
     @objc private func dismissContextMenu(){
         UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut) {[weak self] in
             guard let self = self else {return}
             focusedView?.frame = startingFrame ?? .zero
+            reactionHostVC?.view.removeFromSuperview()
+            messageMenuHostVC?.view.removeFromSuperview()
             blurView?.alpha = 0
         }completion: { [weak self] _ in
             self?.highlightedCell?.alpha = 1
@@ -264,6 +311,9 @@ extension MessageListController:UICollectionViewDelegate, UICollectionViewDataSo
             self?.highlightedCell = nil
             self?.blurView = nil
             self?.focusedView = nil
+            self?.messageMenuHostVC = nil
+            self?.reactionHostVC = nil
+            
         }
     }
     
@@ -294,10 +344,20 @@ private extension UICollectionView{
         scrollToItem(at: lastRowIndexPath, at: scrollPosition, animated: animated)
     }
 }
+extension CALayer{
+    func applyShadow(color:UIColor,alpha:Float,x:CGFloat,blur:CGFloat , y:CGFloat){
+        shadowColor = color.cgColor
+        shadowOpacity = alpha
+        shadowOffset = .init(width: x, height: y)
+        shadowRadius = blur
+        masksToBounds = false
+    }
+}
 
 #Preview{
     MessageListView(ChatRoomViewModel(.placeholder))
         .ignoresSafeArea()
+        .environmentObject(VoiceMessagePlayer())
 }
 
 
