@@ -9,13 +9,14 @@ import SwiftUI
 
 
 struct EmojiReaction{
-    let reaction:Recation
+    let reaction:Reaction
     var isAnimating:Bool = false
     var opacity:CGFloat = 1
 }
 
 struct ReactionPickerView: View {
     let message:MessageItem
+    let onTapHandler:((_ selectedEmoji:Reaction) -> Void)
     @State private var animateBackgroundView = false
     @State private var emojiState:[EmojiReaction] = [
         EmojiReaction(reaction: .like),
@@ -43,6 +44,7 @@ struct ReactionPickerView: View {
             }
         }
     }
+    
     private var springAnimation:Animation{
         Animation.spring(
             response: 0.55,
@@ -50,9 +52,11 @@ struct ReactionPickerView: View {
             blendDuration: 0.05
         ).speed(4)
     }
+    
     private func reactionButton(_ item:EmojiReaction,at index:Int)-> some View{
         Button {
-           
+            guard item.reaction != .more else {return}
+            onTapHandler(item.reaction)
                 
         }label: {
             buttonBody(item, at: index)
@@ -69,6 +73,7 @@ struct ReactionPickerView: View {
         }
     }
     
+    
     private func getAnimationIndex(_ index:Int) -> Int{
         if message.direction == .sent{
             let reversedIndex = emojiState.count - 1 - index
@@ -77,6 +82,7 @@ struct ReactionPickerView: View {
             return index
         }
     }
+    
     
     @ViewBuilder
     private func buttonBody(_ item:EmojiReaction,at index:Int)-> some View{
@@ -90,9 +96,17 @@ struct ReactionPickerView: View {
         }else{
             Text(item.reaction.emoji)
                 .font(.system(size: 30))
+                .background(selectedEmojiIndicator(item.reaction))
             
         }
     }
+    
+    private func selectedEmojiIndicator(_ reaction:Reaction)-> some View{
+        Color(.systemGray5)
+            .frame(width: 45,height: 45)
+            .clipShape(Circle())
+    }
+    
     
     private func backgroundView()->some View{
         Capsule()
@@ -107,5 +121,7 @@ struct ReactionPickerView: View {
 }
 
 #Preview {
-    ReactionPickerView(message: .receivePlaceholder)
+    ReactionPickerView(message: .receivePlaceholder){ _ in
+        
+    }
 }

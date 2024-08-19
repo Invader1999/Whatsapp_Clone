@@ -73,6 +73,10 @@ struct BubbleVoiceView: View {
         .frame(maxWidth: .infinity, alignment: item.alignment)
         .padding(.leading, item.leadingPadding)
         .padding(.trailing, item.trailingPadding)
+        .overlay(alignment:item.reactionAnchor){
+            MessageReactionView(message: item)
+                .offset(x:item.showGroupPartnerInfo ? 50 : 0,y: 10)
+        }
         .onReceive(voiceMessagePlayer.$playbackState) { state in
             observePlaybackState(state)
         }
@@ -135,6 +139,7 @@ extension BubbleVoiceView{
 
 #Preview {
     BubbleVoiceView(item: .sentPlaceholder)
+        .environmentObject(VoiceMessagePlayer())
         .onAppear {
             let thumbImage = UIImage(systemName: "circle.fill")
             UISlider.appearance().setThumbImage(thumbImage, for: .normal)

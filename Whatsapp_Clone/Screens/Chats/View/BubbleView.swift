@@ -33,7 +33,7 @@ struct BubbleView: View {
     private func composeDynamicBubbleView()-> some View{
         switch message.type{
         case .text:
-            BubbuleTextView(item: message)
+            BubbleTextView(item: message)
         case .video,.photo:
             BubbleImageView(item:message)
         case .audio:

@@ -30,7 +30,7 @@ enum MessageMenuAction:String,CaseIterable,Identifiable{
 }
 
 
-enum Recation:Int{
+enum Reaction:Int{
     case like
     case heart
     case laugh
@@ -86,6 +86,15 @@ enum MessageType:Hashable{
             return "audio"
         }
     }
+    
+    var isAdminMessage:Bool{
+        if case .admin = self {
+            return true
+        }else{
+            return false
+        }
+    }
+    
     var iconName:String{
         switch self {
         case .admin:

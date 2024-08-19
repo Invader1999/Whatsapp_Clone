@@ -10,6 +10,10 @@ import SwiftUI
 import Firebase
 
 struct MessageItem:Identifiable{
+    typealias userId = String
+    typealias emoji = String
+    typealias emojiCount = Int
+    
     let id:String
     let isGroupChat:Bool
     let text:String
@@ -23,6 +27,8 @@ struct MessageItem:Identifiable{
     var videoURL:String?
     var audioURL:String?
     var audioDuration:TimeInterval?
+    var reactions:[emoji:emojiCount] = [:]
+    var userReactions:[userId:emoji] = [:]
     
     var direction:MessageDirection{
         return ownerUid == Auth.auth().currentUser?.uid  ? .sent : .received
@@ -81,6 +87,13 @@ struct MessageItem:Identifiable{
         return direction == .received ? .leading : .trailing
     }
     
+    var reactionAnchor:Alignment{
+        return direction == .sent ? .bottomTrailing : .bottomLeading
+    }
+    
+    var hasReactions:Bool{
+        return !reactions.isEmpty
+    }
     
     func containsSameOwner(as message:MessageItem)-> Bool{
         if let userA = message.sender, let userB = self.sender{
@@ -114,6 +127,8 @@ extension MessageItem{
         self.videoURL = dict[.videoURL] as? String ?? nil
         self.audioURL = dict[.audioURL] as? String ?? nil
         self.audioDuration = dict[.audioDuration] as? TimeInterval ?? nil
+        self.reactions = dict[.reactions] as? [emoji:emojiCount] ?? [:]
+        self.userReactions = dict[.userReactions] as? [userId:emoji] ?? [:]
     }
 }
 
@@ -127,4 +142,6 @@ extension String{
     static let videoURL = "videoURL"
     static let audioURL = "audioURL"
     static let audioDuration = "audioDuration"
+    static let reactions = "reactions"
+    static let userReactions = "userReactions"
 }

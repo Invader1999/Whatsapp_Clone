@@ -395,4 +395,11 @@ final class ChatRoomViewModel: ObservableObject {
             return !message.isSentByMe && !message.containsSameOwner(as: priorMessage)
         }
     }
+    
+    func addReaction(_ reaction:Reaction,to message:MessageItem){
+        guard let currentUser else {return}
+        MessageService.addReaction(reaction, to: message, in: channel, from: currentUser) { emojiCount in
+            
+        }
+    }
 }
