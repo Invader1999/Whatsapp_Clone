@@ -29,7 +29,7 @@ struct MessageReactionView: View {
                         .fontWeight(.semibold)
                 }
                 
-                if emojisCount > 2{
+                if emojisCount > 1{
                     Text(emojisCount.description)
                         .fontWeight(.semibold)
                 }

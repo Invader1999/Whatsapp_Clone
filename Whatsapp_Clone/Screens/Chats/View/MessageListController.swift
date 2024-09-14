@@ -248,11 +248,11 @@ extension MessageListController{
        
        guard let selectedCell = messagesCollectionView.cellForItem(at: indexPath) else {return}
        
+       Haptic.impact(.medium)
+       
        //selectedCell.backgroundColor = .red
        startingFrame =  selectedCell.superview?.convert(selectedCell.frame, to: nil)
-      
 
-       
        guard let snapshotCell = selectedCell.snapshotView(afterScreenUpdates: false) else {return}
        focusedView = UIView(frame: startingFrame ?? .zero)
        guard let focusedView else {return}
