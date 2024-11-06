@@ -18,6 +18,14 @@ struct ChatItemView: View {
                 titleTextView()
                 lastMessagePreview()
             }
+            .overlay(alignment: .bottomTrailing) {
+                if channel.unreadCount > 0{
+                    if channel.unreadCount > 0 {
+                        badgeView(count: channel.unreadCount)
+                    }
+                }
+               
+            }
         }
     }
     
@@ -49,8 +57,21 @@ struct ChatItemView: View {
                 .foregroundStyle(.gray)
         }
     }
+    
+    
+    private func badgeView(count:Int) ->some View {
+        Text(count.description)
+            .foregroundStyle(.white)
+            .padding(.horizontal,8)
+            .padding(.vertical,2)
+            .background(.badge)
+            .bold()
+            .font(.caption)
+            .clipShape(Capsule())
+    }
 }
 
 #Preview {
     ChatItemView(channel: .placeholder)
+        .padding(.horizontal)
 }

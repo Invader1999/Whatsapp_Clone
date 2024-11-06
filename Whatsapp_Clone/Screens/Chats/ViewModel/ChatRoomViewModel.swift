@@ -96,7 +96,7 @@ final class ChatRoomViewModel: ObservableObject {
     }
     
     func sendMessage() {
-        guard let currentUser else { return }
+        //guard let currentUser else { return }
         if mediaAttachments.isEmpty{
             sendTextMessage(textMessage)
             

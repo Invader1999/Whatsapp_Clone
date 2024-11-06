@@ -21,6 +21,7 @@ struct ChannelItem:Identifiable,Hashable {
     private var thumbnailUrl: String?
     var createdBy: String
     var lastMessageType:MessageType
+    var unreadCount: Int = 0
 
     var isGroupChat: Bool {
         return membersCount > 2

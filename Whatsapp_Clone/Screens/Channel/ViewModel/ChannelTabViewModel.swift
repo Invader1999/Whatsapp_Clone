@@ -43,7 +43,9 @@ final class ChannelTabViewModel:ObservableObject{
             guard let dict = snapshot.value as? [String:Any] else{return}
             dict.forEach { key,value in
                 let channelId = key
+                let unreadCount = value as? Int ?? 0
                 self?.getChannel(with: channelId)
+                print("unread messages count is \(unreadCount)")
             }
         } withCancel: { error in
             print("Failed to get users channel's IDs:\(error.localizedDescription)")
@@ -75,6 +77,14 @@ final class ChannelTabViewModel:ObservableObject{
         let channelMembersUids = Array(channel.membersUids.filter{$0 != curentUid}.prefix(2))
         UserService.getUsers(with: channelMembersUids) { userNode in
             completion(userNode.users)
+        }
+    }
+    
+    private func getUnreadMessagesCount(for channel:ChannelItem, completion:@escaping (_ unreadCount: Int)-> Void){
+        guard let curentUid = Auth.auth().currentUser?.uid else {return}
+        FirebaseConstants.UserChannelsRef.child(curentUid).child(channel.id).observeSingleEvent(of:.value) { snapshot in
+            let unreadCount = snapshot.value as? Int ?? 0
+            completion(unreadCount)
         }
     }
     

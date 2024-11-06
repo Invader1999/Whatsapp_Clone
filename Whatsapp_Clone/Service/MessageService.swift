@@ -31,7 +31,7 @@ struct MessageService{
         
         FirebaseConstants.ChannelsRef.child(channel.id).updateChildValues(channelDict)
         FirebaseConstants.MessagesRef.child(channel.id).child(messageId).setValue(messageDict)
-        
+        increaseUnReadCountForMembers(in: channel)
         onComplete()
     }
    
@@ -63,6 +63,7 @@ struct MessageService{
         
         FirebaseConstants.ChannelsRef.child(channel.id).updateChildValues(channelDict)
         FirebaseConstants.MessagesRef.child(channel.id).child(messageId).setValue(messageDict)
+        increaseUnReadCountForMembers(in: channel)
         completion()
     }
     
@@ -178,6 +179,15 @@ struct MessageService{
             completion(emojiCount)
         }
     }
+    
+    static func increaseUnReadCountForMembers(in channel:ChannelItem){
+        let membersUids = channel.membersExcludingMe.map { $0.uid }
+        for uid in membersUids {
+            let channelUnReadCountRef = FirebaseConstants.UserChannelsRef.child(uid).child(channel.id)
+            increaseCountViaTransaction(at: channelUnReadCountRef)
+        }
+    }
+
 }
 
 struct MessageNode{
