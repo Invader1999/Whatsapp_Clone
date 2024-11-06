@@ -187,6 +187,12 @@ struct MessageService{
             increaseCountViaTransaction(at: channelUnReadCountRef)
         }
     }
+    
+    
+    static func resetUnreadCountForMembers(in channel:ChannelItem){
+        guard let currentUid = Auth.auth().currentUser?.uid else {return}
+        FirebaseConstants.UserChannelsRef.child(currentUid).child(channel.id).setValue(0)
+    }
 
 }
 
