@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -157,6 +157,10 @@
 		1FFF1B2B2BF1DFDC00FF5058 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
 		1FFF1B2D2BF1E18700FF5058 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		1F2969102CDB52B1009D9F24 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1FF667092BD6D1A30087A87E /* Frameworks */ = {
@@ -314,6 +318,7 @@
 		1FCAB89E2BD8D1DA00B04AA5 /* Updates */ = {
 			isa = PBXGroup;
 			children = (
+				1F2969102CDB52B1009D9F24 /* Models */,
 				1FCAB89F2BD8D1F700B04AA5 /* Views */,
 			);
 			path = Updates;
@@ -547,6 +552,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				1F2969102CDB52B1009D9F24 /* Models */,
 			);
 			name = Whatsapp_Clone;
 			packageProductDependencies = (

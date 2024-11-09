@@ -39,7 +39,7 @@ final class ChannelTabViewModel:ObservableObject{
     
     private func fetchCurrentUserChannel(){
         guard let curentUid = Auth.auth().currentUser?.uid else {return}
-        FirebaseConstants.UserChannelsRef.child(curentUid).observe(.value) {[weak self] snapshot in
+        FirebaseConstants.UserChannelsRef.child(curentUid).queryLimited(toFirst: 15).observe(.value) {[weak self] snapshot in
             guard let dict = snapshot.value as? [String:Any] else{return}
             dict.forEach { key,value in
                 let channelId = key
@@ -57,14 +57,23 @@ final class ChannelTabViewModel:ObservableObject{
         FirebaseConstants.ChannelsRef.child(channelId).observe(.value) {[weak self] snapshot in
             guard let dict = snapshot.value as? [String:Any], let self = self else{return}
             var channel = ChannelItem(dict)
-            self.getChannelMembers(channel){ members in
-                channel.members = members
+            //checking if we already know the members of this channel
+            
+            if let memCachedChannel = self.channelDictionary[channelId], !memCachedChannel.members.isEmpty{
+                channel.members = memCachedChannel.members
                 channel.unreadCount = unreadCount
-                channel.members.append(self.currentUser)
                 self.channelDictionary[channelId] = channel
                 self.reloadData()
-                //                self?.channels.append(channel)
-                print("channel \(channel.title)")
+            }else{
+                self.getChannelMembers(channel){ members in
+                    channel.members = members
+                    channel.unreadCount = unreadCount
+                    channel.members.append(self.currentUser)
+                    self.channelDictionary[channelId] = channel
+                    self.reloadData()
+                    //self?.channels.append(channel)
+                    print("channel \(channel.title)")
+                }
             }
         }withCancel: { error in
             print("Failed to get channel for  id \(channelId):\(error.localizedDescription)")
